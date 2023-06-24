@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="@string/home"
+
+    android:id="@+id/homeFragment"
+    ></item>
+    <item android:title="sdsd"
+        android:icon="@drawable/baseline_tag_24"
+        ></item>
+</menu>

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">LazaStore</string>
+    <string name="welcomeText">Find your \nGadget</string>
+    <string name="welcome">Welcome back</string>
+    <string name="man">Man</string>
+    <string name="skip">Skip</string>
+    <string name="women">Woman</string>
+    <string name="login">Login</string>
+    <string name="getStarted">Get Started</string>
+    <string name="forgotPass">Forgot passcode?</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="chooseBrand">Choose Brand</string>
+    <string name="viewAll">View All</string>
+    <string name="hello">Hello</string>
+    <string name="welcomeHome">Welcome to Laza</string>
+    <string name="newArrival">New Arrival</string>
+    <string name="haveAcc">Already have an account?</string>
+    <string name="signin"><u>Signin</u></string>
+    <string name="facebook">Facebook</string>
+    <string name="welcomeLogin">Welcome!</string>
+    <string name="welcomeRegister">Welcome, please login!</string>
+    <string name="nickname">Nickname</string>
+    <string name="joinUs">Join us</string>
+    <string name="twitter">Twitter</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    <string name="info">Info</string>
+    <string name="rePass">Re-password</string>
+    <string name="fillTheGaps">Fill the gaps</string>
+    <string name="passShort">Password is too short. (Min. 5 symbols)</string>
+    <string name="google">Google</string>
+    <string name="signup">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="rememberMe">Remember me</string>
+    <string name="createAcc">Create account</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
