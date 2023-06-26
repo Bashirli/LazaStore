@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/accInfo"
+
+        android:icon="@drawable/info_ico"
+        android:id="@+id/action_info">
+
+    </item>
+
+
+    <item
+        android:title="@string/password"
+        android:icon="@drawable/lock"
+        android:id="@+id/action_password">
+
+    </item>
+    <item
+        android:title="@string/order"
+        android:icon="@drawable/bag_icon"
+        android:id="@+id/action_order">
+
+    </item>
+
+    <item
+        android:title="@string/wishlist"
+        android:icon="@drawable/heart_ico"
+        android:id="@+id/action_wishlist">
+
+    </item>
+
+    <item
+        android:title="@string/settings"
+        android:icon="@drawable/settings_ico"
+        android:id="@+id/action_settings">
+
+    </item>
+
+
+
+
+</menu>

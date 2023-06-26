@@ -2,12 +2,16 @@ package com.bashirli.lazastore.data.mapper
 
 import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.Category
+import com.bashirli.lazastore.data.dto.CategoryDTOItem
 import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.UserDTO
 import com.bashirli.lazastore.domain.model.AuthModel
+import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductCategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
+import com.bashirli.lazastore.domain.model.UserModel
 
 fun AuthDTO.toAuthModel():AuthModel {
    return AuthModel(
@@ -54,3 +58,20 @@ fun List<ProductDTOItem>.toProductModel()=map{
         title=it.title
     )
 }
+
+fun List<CategoryDTOItem>.toCategoryModel() = map {
+    CategoryModel(
+        id = it.id,
+        name = it.name,
+        image = it.image
+    )
+}
+
+fun UserDTO.toUserModel()=UserModel(
+    name = name,
+    avatar = avatar,
+    password = password,
+    role=role,
+    email=email
+)
+

@@ -4,9 +4,11 @@ import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.domain.model.AuthModel
+import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.UserModel
 import kotlinx.coroutines.flow.Flow
 
 interface ApiRepository {
@@ -15,6 +17,9 @@ interface ApiRepository {
 
     suspend fun registerUser(registerPostModel: RegisterPostModel):Flow<Resource<RegisterModel>>
 
+    suspend fun getCurrentUser():Flow<Resource<UserModel>>
+
     suspend fun getProducts():Flow<Resource<List<ProductModel>>>
 
+    suspend fun getCategories():Flow<Resource<List<CategoryModel>>>
 }

@@ -8,6 +8,6 @@ data class ProductModel(
     val description: String,
     val id: Int,
     val images: List<String>,
-    val price: Int,
+    val price: Long,
     val title: String
 )

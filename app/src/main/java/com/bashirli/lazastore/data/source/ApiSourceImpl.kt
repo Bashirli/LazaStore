@@ -4,8 +4,10 @@ import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.findExceptionMessage
 import com.bashirli.lazastore.common.util.findExceptionMessageList
 import com.bashirli.lazastore.data.dto.AuthDTO
+import com.bashirli.lazastore.data.dto.CategoryDTOItem
 import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.UserDTO
 import com.bashirli.lazastore.data.service.Service
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import javax.inject.Inject
@@ -49,6 +51,38 @@ class ApiSourceImpl @Inject constructor(
     override suspend fun getProducts(): Resource<List<ProductDTOItem>> {
         return try{
             val response=service.getProducts()
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+    override suspend fun getCategories(): Resource<List<CategoryDTOItem>> {
+        return try{
+            val response=service.getCategories()
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+    override suspend fun getCurrentUser(): Resource<UserDTO> {
+        return try{
+            val response=service.getCurrentUser()
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)

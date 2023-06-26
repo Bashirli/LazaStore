@@ -15,7 +15,7 @@ data class ProductDTOItem(
     @SerializedName("images")
     val images: List<String>,
     @SerializedName("price")
-    val price: Int,
+    val price: Long,
     @SerializedName("title")
     val title: String,
     @SerializedName("updatedAt")
