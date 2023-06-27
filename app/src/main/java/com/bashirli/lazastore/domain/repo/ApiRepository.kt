@@ -8,6 +8,7 @@ import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
 import kotlinx.coroutines.flow.Flow
 
@@ -22,4 +23,9 @@ interface ApiRepository {
     suspend fun getProducts():Flow<Resource<List<ProductModel>>>
 
     suspend fun getCategories():Flow<Resource<List<CategoryModel>>>
+
+    suspend fun getCategoryProducts(id:Int):Flow<Resource<List<ProductModel>>>
+
+    suspend fun getSingleProduct(id:Int):Flow<Resource<SingleProductModel>>
+
 }

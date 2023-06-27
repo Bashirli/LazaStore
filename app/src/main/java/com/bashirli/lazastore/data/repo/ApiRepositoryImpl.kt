@@ -8,6 +8,7 @@ import com.bashirli.lazastore.data.mapper.toAuthModel
 import com.bashirli.lazastore.data.mapper.toCategoryModel
 import com.bashirli.lazastore.data.mapper.toProductModel
 import com.bashirli.lazastore.data.mapper.toRegisterModel
+import com.bashirli.lazastore.data.mapper.toSingleProductModel
 import com.bashirli.lazastore.data.mapper.toUserModel
 import com.bashirli.lazastore.data.source.ApiSource
 import com.bashirli.lazastore.domain.model.AuthModel
@@ -15,6 +16,7 @@ import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
 import com.bashirli.lazastore.domain.repo.ApiRepository
 import kotlinx.coroutines.flow.Flow
@@ -99,5 +101,33 @@ class ApiRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCategoryProducts(id: Int): Flow<Resource<List<ProductModel>>>
+    = flow {
+        emit(Resource.loading(null))
+        val response=apiSource.getCategoryProducts(id)
+        when(response.status){
+            Status.SUCCESS->{
+                emit(Resource.success(response.data?.toProductModel()))
+            }
+            Status.ERROR->{
+                emit(Resource.error(response.message?:"Error",null))
+            }
+            else->{}
+        }
+    }
+
+    override suspend fun getSingleProduct(id: Int): Flow<Resource<SingleProductModel>> = flow{
+        emit(Resource.loading(null))
+        val response=apiSource.getSingleProduct(id)
+        when(response.status){
+            Status.SUCCESS->{
+                emit(Resource.success(response.data?.toSingleProductModel()))
+            }
+            Status.ERROR->{
+                emit(Resource.error(response.message?:"Error",null))
+            }
+            else->{}
+        }
+    }
 
 }

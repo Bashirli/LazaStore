@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="productData"
+            type="com.bashirli.lazastore.domain.model.SingleProductModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ui.product.ProductFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.44">
+
+            </androidx.constraintlayout.widget.Guideline>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.41">
+
+            </androidx.constraintlayout.widget.Guideline>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05">
+
+            </androidx.constraintlayout.widget.Guideline>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonGoBack"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:backgroundTint="@color/gray"
+                app:icon="@drawable/arrow_left"
+                app:iconTintMode="multiply"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCart"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline8"
+                app:rippleColor="@color/black">
+
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCart"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/gray"
+                app:icon="@drawable/bag_icon"
+                app:iconTintMode="multiply"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonGoBack"
+                app:layout_constraintTop_toTopOf="@+id/guideline8"
+                app:rippleColor="@color/black">
+
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.ouattararomuald.slider.ImageSlider
+                android:layout_width="match_parent"
+                android:id="@+id/imageSlider"
+                android:layout_height="0dp"
+                app:iss_auto_cycle="false"
+                app:initWithAutoCycling="false"
+                app:autoRecoverAfterTouchEvent="false"
+                android:elevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </com.ouattararomuald.slider.ImageSlider>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRoot"
+                style="@style/CustomCardView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:strokeColor="@color/white"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline7">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ScrollView
+                        android:id="@+id/scrollView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:fillViewport="true"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="20dp"
+                                android:fontFamily="@font/raleway_semibold"
+                                android:gravity="center"
+                                android:text="@{productData.title}"
+                                android:textColor="@color/black"
+                                android:textSize="28sp">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="30dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/raleway_semibold"
+                                android:text="@string/colors"
+                                android:textColor="@color/black"
+                                android:textSize="17sp">
+
+                            </TextView>
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="7dp"
+                                app:singleLine="true"
+                                app:singleSelection="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/raleway_bold"
+                                    android:text="@string/skyBlue"
+                                    android:textSize="12sp"
+                                    app:chipBackgroundColor="@color/white"
+                                    app:chipIcon="@drawable/sky_blue_icon">
+
+                                </com.google.android.material.chip.Chip>
+
+                                <com.google.android.material.chip.Chip
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/raleway_bold"
+                                    android:text="@string/roseGold"
+                                    android:textSize="12sp"
+                                    app:chipBackgroundColor="@color/white"
+                                    app:chipIcon="@drawable/rose_gold_icon">
+
+                                </com.google.android.material.chip.Chip>
+
+                                <com.google.android.material.chip.Chip
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/raleway_bold"
+                                    android:text="@string/green"
+                                    android:textSize="12sp"
+                                    app:chipBackgroundColor="@color/white"
+                                    app:chipIcon="@drawable/green_icon">
+
+                                </com.google.android.material.chip.Chip>
+
+                            </com.google.android.material.chip.ChipGroup>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:text="@string/description"
+                                android:textColor="@color/purple"
+                                android:textSize="17sp"
+                                android:layout_marginTop="30dp"
+                                android:fontFamily="@font/raleway_bold"
+                                android:layout_marginHorizontal="30dp"
+                                android:layout_height="wrap_content">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="30dp"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/raleway_semibold"
+                                android:text="@{productData.description}"
+                                android:textColor="@color/gray_E">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/raleway_bold"
+                                android:text="@string/total"
+                                android:textColor="@color/black"
+                                android:textSize="17sp">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/raleway_bold"
+                                android:text='@{"$"+productData.price}'
+                                android:textColor="@color/purple"
+                                android:textSize="22sp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginTop="30dp"
+                            android:backgroundTint="@color/purple"
+                            android:paddingVertical="25dp"
+                            android:text="@string/addToBasket"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="5dp"
+                            app:cornerRadius="10dp"
+                            app:rippleColor="@color/white">
+
+                        </com.google.android.material.button.MaterialButton>
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -4,15 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemProductBinding
+import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     private val arrayList=ArrayList<ProductModel>()
-
+    var onProductClickListener:(ProductModel)->Unit={}
     inner class ProductHolder (private val binding:ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item:ProductModel){
             binding.productData=item
+        }
+        fun find(item:ProductModel,onProductClickListener:(ProductModel)->Unit={}){
+            binding.linearLayout.setOnClickListener {
+                onProductClickListener(item)
+            }
         }
 
     }
@@ -29,6 +35,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         val item=arrayList.get(position)
         holder.bind(item)
+        holder.find(item,onProductClickListener)
     }
 
     fun updateList(list:List<ProductModel>){

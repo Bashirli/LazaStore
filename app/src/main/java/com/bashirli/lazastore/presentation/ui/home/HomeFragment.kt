@@ -3,6 +3,7 @@ package com.bashirli.lazastore.presentation.ui.home
 import android.view.Gravity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bashirli.lazastore.common.base.BaseFragment
 import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
@@ -37,6 +38,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 drawerLayout.openDrawer(GravityCompat.START)
             }
 
+            adapterCategory.onCategoryClickListener={
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(it))
+            }
+
+            adapterProduct.onProductClickListener={
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id))
+            }
 
         }
     }
@@ -103,7 +111,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun setUserData(data:UserModel){
         currentUserData=data
-        val headerView =  binding.navigationView.getHeaderView(0)
+        val headerView =binding.navigationView.getHeaderView(0)
         val headerBinding=HeaderLayoutBinding.bind(headerView)
 
         headerBinding.apply {

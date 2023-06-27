@@ -5,12 +5,14 @@ import com.bashirli.lazastore.data.dto.Category
 import com.bashirli.lazastore.data.dto.CategoryDTOItem
 import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.UserDTO
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.ProductCategoryModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
+import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
 
 fun AuthDTO.toAuthModel():AuthModel {
@@ -75,3 +77,10 @@ fun UserDTO.toUserModel()=UserModel(
     email=email
 )
 
+fun SingleProductDTO.toSingleProductModel()=SingleProductModel(
+    id=id,
+    description = description,
+    images = images,
+    price = price,
+    title = title
+)

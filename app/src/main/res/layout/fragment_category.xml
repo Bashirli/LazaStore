@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.CategoryFragment">
+    tools:context=".presentation.ui.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -17,7 +18,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGoBack"
-        app:rippleColor="@color/black"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toStartOf="@+id/cardView2"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5">
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:rippleColor="@color/black">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -45,6 +46,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline5">
 
         <ImageView
+            android:id="@+id/imageCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="center">
@@ -56,7 +58,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCart"
-        app:rippleColor="@color/black"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,16 +67,20 @@
         app:iconTintMode="multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="@+id/guideline5">
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:rippleColor="@color/black">
 
     </com.google.android.material.button.MaterialButton>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="35dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSort"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonGoBack">
 
@@ -100,5 +105,95 @@
 
         </TextView>
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/sort"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/sort_ico"
+        app:iconTintMode="multiply"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3"
+        app:rippleColor="@color/black">
+
+
+    </com.google.android.material.button.MaterialButton>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:id="@+id/rvProduct"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:orientation="vertical"
+        app:spanCount="2"
+        tools:listitem="@layout/item_product"
+        android:layout_marginTop="7dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/layoutEmpty"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/empty_result_anim">
+
+        </com.airbnb.lottie.LottieAnimationView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/raleway_semibold"
+            android:gravity="center"
+            android:text="@string/emptyCat"
+            android:textColor="@color/black"
+            android:textSize="24sp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="@string/checkOtherCat"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:textColor="@color/gray_E"
+            android:fontFamily="@font/raleway_medium"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

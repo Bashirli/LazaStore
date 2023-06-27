@@ -7,6 +7,7 @@ import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTOItem
 import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.UserDTO
 import com.bashirli.lazastore.data.service.Service
 import com.bashirli.lazastore.domain.model.RegisterPostModel
@@ -96,5 +97,37 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCategoryProducts(id: Int): Resource<List<ProductDTOItem>> {
+        return try{
+            val response=service.getCategoryProducts(id)
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+
+    override suspend fun getSingleProduct(id: Int): Resource<SingleProductDTO> {
+        return try{
+            val response=service.getSingleProduct(id)
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
 
 }
