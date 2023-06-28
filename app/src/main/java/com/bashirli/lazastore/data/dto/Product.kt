@@ -3,7 +3,7 @@ package com.bashirli.lazastore.data.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class SingleProductDTO(
+data class Product(
     @SerializedName("brand")
     val brand: String,
     @SerializedName("category")

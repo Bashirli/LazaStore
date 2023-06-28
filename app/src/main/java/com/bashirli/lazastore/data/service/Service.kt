@@ -1,11 +1,11 @@
 package com.bashirli.lazastore.data.service
 
 import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.CategoryDTOItem
-import com.bashirli.lazastore.data.dto.ProductDTOItem
-import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.CategoryDTO
+import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
-import com.bashirli.lazastore.data.dto.UserDTO
+import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import retrofit2.Response
 import retrofit2.http.Body
@@ -20,22 +20,22 @@ interface Service {
 
     @POST("auth/login")
     @FormUrlEncoded
-    suspend fun loginUser(@Field("email") email:String,@Field("password") password:String):Response<AuthDTO>
+    suspend fun loginUser(@Field("username") username:String,@Field("password") password:String):Response<AuthDTO>
 
-    @POST("users")
+    @POST("users/add")
     suspend fun registerUser(@Body registerPostModel: RegisterPostModel):Response<RegisterDTO>
 
-    @GET("auth/profile")
+    @GET("users/1")
     suspend fun getCurrentUser():Response<UserDTO>
 
     @GET("products")
-    suspend fun getProducts():Response<List<ProductDTOItem>>
+    suspend fun getProducts():Response<ProductDTO>
 
-    @GET("categories")
-    suspend fun getCategories():Response<List<CategoryDTOItem>>
+    @GET("products/categories")
+    suspend fun getCategories():Response<CategoryDTO>
 
-    @GET("products")
-    suspend fun getCategoryProducts(@Query("categoryId") id:Int):Response<List<ProductDTOItem>>
+    @GET("products/category/{category}")
+    suspend fun getCategoryProducts(@Path("category") category:String):Response<ProductDTO>
 
     @GET("products/{id}")
     suspend fun getSingleProduct(@Path("id") id:Int):Response<SingleProductDTO>

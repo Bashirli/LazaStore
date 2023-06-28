@@ -93,7 +93,7 @@
                 android:layout_marginTop="40dp"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/purple"
-                app:startIconDrawable="@drawable/message"
+                app:startIconDrawable="@drawable/baseline_tag_24"
                 android:textColorHint="@color/gray_E"
                 app:boxBackgroundColor="@color/white"
                 style="@style/Widget.Material3.TextInputLayout.FilledBox"
@@ -101,11 +101,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:inputType="textEmailAddress"
-                    android:id="@+id/editEmail"
+                    android:id="@+id/editUsername"
                     android:textColorHint="@color/black"
 
                     android:textColor="@color/black"
-                    android:hint="@string/email"
+                    android:hint="@string/username"
                     android:textSize="15sp"
                     android:fontFamily="@font/raleway_semibold"
                     android:layout_height="wrap_content">

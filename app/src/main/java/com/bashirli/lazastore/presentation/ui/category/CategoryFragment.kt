@@ -12,6 +12,7 @@ import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.common.util.setImageURL
 import com.bashirli.lazastore.databinding.FragmentCategoryBinding
 import com.bashirli.lazastore.domain.model.CategoryModel
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.presentation.ui.home.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,10 +30,9 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(FragmentCategoryB
     }
 
     override fun setup() {
-    categoryModel=args.categoryData
-        viewModel.getCategoryProducts(categoryModel.id)
+
+        viewModel.getCategoryProducts(args.categoryName)
         binding.apply {
-            imageCategory.setImageURL(categoryModel.image,requireContext())
             rvProduct.adapter=adapter
 
             buttonGoBack.setOnClickListener {
@@ -49,7 +49,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(FragmentCategoryB
                     Status.SUCCESS->{
                         pb.cancel()
                         it.data?.let {
-                            if(it.isEmpty()){
+                            if(it.products.isEmpty()){
                                 binding.rvProduct.visibility=View.GONE
                                 binding.layoutEmpty.visibility= View.VISIBLE
                             }else{
@@ -71,8 +71,9 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(FragmentCategoryB
         }
     }
 
-    private fun setData(data:List<ProductModel>){
-        adapter.updateList(data)
+    private fun setData(data:MainProductModel){
+        adapter.updateList(data.products)
+        binding.productData=data
     }
 
 }

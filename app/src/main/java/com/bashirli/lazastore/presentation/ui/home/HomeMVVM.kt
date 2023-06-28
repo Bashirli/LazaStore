@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.domain.model.CategoryModel
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.UserModel
 import com.bashirli.lazastore.domain.use_case.GetCategoriesUseCase
@@ -23,8 +24,8 @@ class HomeMVVM @Inject constructor(
     private val getCurrentUserUseCase: GetCurrentUserUseCase
 ) : ViewModel() {
 
-    private val _productData=MutableLiveData<Resource<List<ProductModel>>>()
-    val productData:LiveData<Resource<List<ProductModel>>> get()=_productData
+    private val _productData=MutableLiveData<Resource<MainProductModel>>()
+    val productData:LiveData<Resource<MainProductModel>> get()=_productData
 
     private val _categoryData=MutableLiveData<Resource<List<CategoryModel>>>()
     val categoryData:LiveData<Resource<List<CategoryModel>>> get()=_categoryData
@@ -49,7 +50,7 @@ class HomeMVVM @Inject constructor(
     private fun getProducts(){
         viewModelScope.launch {
             getProductsUseCase().collectLatest {
-                _productData.value=it
+                _productData.postValue(it)
             }
         }
     }

@@ -13,8 +13,11 @@ import com.bashirli.lazastore.R
 import com.bashirli.lazastore.common.base.BaseFragment
 import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
+import com.bashirli.lazastore.databinding.ActivityMainBinding.inflate
 import com.bashirli.lazastore.databinding.FragmentProductBinding
 import com.bashirli.lazastore.domain.model.SingleProductModel
+import com.denzcoskun.imageslider.constants.AnimationTypes
+import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ouattararomuald.slider.SliderAdapter
@@ -73,11 +76,13 @@ class ProductFragment : BaseFragment<FragmentProductBinding>(FragmentProductBind
     private fun setData(data:SingleProductModel){
         binding.apply {
             productData=data
-            imageSlider.adapter= SliderAdapter(
-                requireContext(),
-                GlideImageLoaderFactory(),
-                imageUrls = data.images
-            )
+
+            val imageList=ArrayList<SlideModel>()
+            data.images.forEach {
+                imageList.add(SlideModel(it))
+            }
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_INSIDE)
+            imageSlider.setSlideAnimation(AnimationTypes.FIDGET_SPINNER)
         }
     }
 

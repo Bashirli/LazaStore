@@ -10,7 +10,7 @@
     <string name="forgotPass">Forgot passcode?</string>
     <string name="search">Search</string>
     <string name="home">Home</string>
-    <string name="chooseBrand">Choose Brand</string>
+    <string name="chooseBrand">Choose Category</string>
     <string name="viewAll">View All</string>
     <string name="hello">Hello</string>
     <string name="welcomeHome">Welcome to Laza</string>
@@ -41,7 +41,7 @@
     <string name="rememberMe">Remember me</string>
     <string name="createAcc">Create account</string>
     <string name="verifiedProfile">Verified Profile</string>
-    <string name="items365">365 Items</string>
+    <string name="items">Items</string>
     <string name="stock">Available in stock</string>
     <string name="accInfo">Account Information</string>
     <string name="order">Order</string>

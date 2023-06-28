@@ -1,12 +1,10 @@
 package com.bashirli.lazastore.presentation.ui.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View.OnContextClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemCategoryBinding
 import com.bashirli.lazastore.domain.model.CategoryModel
-import com.bashirli.lazastore.domain.model.ProductCategoryModel
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 

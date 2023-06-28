@@ -1,15 +1,15 @@
 package com.bashirli.lazastore.data.mapper
 
 import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.Category
-import com.bashirli.lazastore.data.dto.CategoryDTOItem
-import com.bashirli.lazastore.data.dto.ProductDTOItem
-import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.CategoryDTO
+import com.bashirli.lazastore.data.dto.Product
+import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
-import com.bashirli.lazastore.data.dto.UserDTO
+import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
-import com.bashirli.lazastore.domain.model.ProductCategoryModel
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
@@ -17,70 +17,62 @@ import com.bashirli.lazastore.domain.model.UserModel
 
 fun AuthDTO.toAuthModel():AuthModel {
    return AuthModel(
-        accessToken = accessToken,
-        refreshToken = refreshToken
+        accessToken = token
     )
 }
 
 fun RegisterDTO.toRegisterModel():RegisterModel{
     return RegisterModel(
-        avatar = avatar,
-        name = name,
+        username = username,
         email = email,
         password = password
     )
 }
 
-fun Category.toProductCategoryModel():ProductCategoryModel{
-    return ProductCategoryModel(
-        id=id,
-        image=image,
-        name=name
-    )
-}
-
-fun ProductDTOItem.toProductModel():ProductModel{
-    return ProductModel(
-        category = category.toProductCategoryModel(),
-        description=description,
-        id=id,
-        images=images,
-        price=price,
-        title=title
-    )
-}
-
-fun List<ProductDTOItem>.toProductModel()=map{
+fun List<Product>.toProductModel() = map {
     ProductModel(
-        category = it.category.toProductCategoryModel(),
-        description=it.description,
-        id=it.id,
-        images=it.images,
-        price=it.price,
-        title=it.title
+        brand = it.brand,
+        category = it.category,
+        description = it.description,
+        discountPercentage = it.discountPercentage,
+        price = it.price,
+        title = it.title,
+        images = it.images,
+        rating = it.rating,
+        thumbnail = it.thumbnail,
+        id = it.id
     )
 }
 
-fun List<CategoryDTOItem>.toCategoryModel() = map {
+fun ProductDTO.toMainProductModel():MainProductModel=MainProductModel(
+        total=total,
+        products = products.toProductModel()
+    )
+
+
+
+
+fun CategoryDTO.toCategoryModel()=map {
     CategoryModel(
-        id = it.id,
-        name = it.name,
-        image = it.image
+        it
     )
 }
 
 fun UserDTO.toUserModel()=UserModel(
-    name = name,
-    avatar = avatar,
-    password = password,
-    role=role,
-    email=email
+    username = username,
+    image = image,
+
 )
 
 fun SingleProductDTO.toSingleProductModel()=SingleProductModel(
     id=id,
     description = description,
     images = images,
+    brand=brand,
     price = price,
-    title = title
+    thumbnail = thumbnail,
+    discountPercentage = discountPercentage,
+    rating = rating,
+    title = title,
+    category = category
 )

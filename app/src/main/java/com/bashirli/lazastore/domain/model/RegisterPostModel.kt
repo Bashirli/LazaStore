@@ -1,8 +1,7 @@
 package com.bashirli.lazastore.domain.model
 
 data class RegisterPostModel(
-    val name:String,
+    val username:String,
     val email:String,
-    val password:String,
-    val avatar:String="test.test"
+    val password:String
 )

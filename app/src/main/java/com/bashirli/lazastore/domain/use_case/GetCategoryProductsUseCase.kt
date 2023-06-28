@@ -7,6 +7,6 @@ class GetCategoryProductsUseCase @Inject constructor(
     private val repo:ApiRepository
 ) {
 
-    suspend operator fun invoke(id:Int)=repo.getCategoryProducts(id)
+    suspend operator fun invoke(category:String)=repo.getCategoryProducts(category)
 
 }

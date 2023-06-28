@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                app:setImageWithURL="@{userModel.avatar}"
+                app:setImageWithURL="@{userModel.image}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:textSize="17sp"
-                android:text="@{userModel.name}"
+                android:text="@{userModel.username}"
                 android:fontFamily="@font/inter_semibold"
                 android:layout_height="wrap_content"
                 >

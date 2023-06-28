@@ -20,9 +20,9 @@ class LoginMVVM @Inject constructor(
     private val _loginData=MutableLiveData<Resource<AuthModel>>()
     val loginData:LiveData<Resource<AuthModel>> get()=_loginData
 
-    fun loginUser(email:String,password:String){
+    fun loginUser(username:String,password:String){
        viewModelScope.launch {
-           loginUserUseCase(email, password)
+           loginUserUseCase(username, password)
                .collectLatest {
             _loginData.value=it
            }

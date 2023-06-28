@@ -1,5 +1,6 @@
 package com.bashirli.lazastore.presentation.ui.home
 
+import android.util.Log
 import android.view.Gravity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
@@ -39,7 +40,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
             }
 
             adapterCategory.onCategoryClickListener={
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(it))
+                Log.d("catname",it.category)
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(it.category))
             }
 
             adapterProduct.onProductClickListener={
@@ -61,7 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     Status.SUCCESS->{
                         pb.cancel()
                         it.data?.let {
-                            adapterProduct.updateList(it)
+                            adapterProduct.updateList(it.products)
                         }
                     }
                     Status.LOADING->{

@@ -1,13 +1,16 @@
 package com.bashirli.lazastore.domain.model
 
-import com.bashirli.lazastore.data.dto.Category
 import com.google.gson.annotations.SerializedName
 
 data class ProductModel(
-    val category: ProductCategoryModel,
+    val brand: String,
+    val category: String,
     val description: String,
+    val discountPercentage: Double,
     val id: Int,
     val images: List<String>,
-    val price: Long,
+    val price: Int,
+    val rating: Double,
+    val thumbnail: String,
     val title: String
 )

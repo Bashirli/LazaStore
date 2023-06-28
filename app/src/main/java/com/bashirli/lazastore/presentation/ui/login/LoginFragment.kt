@@ -75,19 +75,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
     private fun login(){
-        val email=binding.editEmail.text.toString()
+        val username=binding.editUsername.text.toString()
         val password=binding.editPass.text.toString()
 
-        if(errorCheck(email.trim(),password.trim())){
+        if(errorCheck(username.trim(),password.trim())){
             return
         }
 
-        viewModel.loginUser(email,password)
+        viewModel.loginUser(username,password)
 
     }
 
-    private fun errorCheck(email:String,password:String):Boolean{
-        if(email.isEmpty()||password.isEmpty()){
+    private fun errorCheck(username:String,password:String):Boolean{
+        if(username.isEmpty()||password.isEmpty()){
             errorToast(requireActivity(),resources.getString(R.string.fillTheGaps))
             return true
         }

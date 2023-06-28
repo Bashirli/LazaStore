@@ -2,10 +2,9 @@ package com.bashirli.lazastore.data.repo
 
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.Status
-import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.data.mapper.toAuthModel
 import com.bashirli.lazastore.data.mapper.toCategoryModel
+import com.bashirli.lazastore.data.mapper.toMainProductModel
 import com.bashirli.lazastore.data.mapper.toProductModel
 import com.bashirli.lazastore.data.mapper.toRegisterModel
 import com.bashirli.lazastore.data.mapper.toSingleProductModel
@@ -13,6 +12,7 @@ import com.bashirli.lazastore.data.mapper.toUserModel
 import com.bashirli.lazastore.data.source.ApiSource
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
@@ -27,10 +27,10 @@ class ApiRepositoryImpl @Inject constructor(
         private val apiSource: ApiSource
 ) : ApiRepository {
 
-    override suspend fun loginUser(email: String, password: String): Flow<Resource<AuthModel>>
+    override suspend fun loginUser(username: String, password: String): Flow<Resource<AuthModel>>
     = flow{
         emit(Resource.loading(null))
-        val response=apiSource.loginUser(email, password)
+        val response=apiSource.loginUser(username, password)
         when(response.status){
             Status.ERROR->{
                 emit(Resource.error(response.message?:"Error",response.data?.toAuthModel()))
@@ -73,12 +73,12 @@ class ApiRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getProducts(): Flow<Resource<List<ProductModel>>> = flow {
+    override suspend fun getProducts(): Flow<Resource<MainProductModel>> = flow {
         emit(Resource.loading(null))
         val response=apiSource.getProducts()
         when(response.status){
             Status.SUCCESS->{
-               emit(Resource.success(response.data?.toProductModel()))
+               emit(Resource.success(response.data?.toMainProductModel()))
             }
             Status.ERROR->{
                 emit(Resource.error(response.message?:"Error",null))
@@ -101,13 +101,12 @@ class ApiRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCategoryProducts(id: Int): Flow<Resource<List<ProductModel>>>
-    = flow {
+    override suspend fun getCategoryProducts(category:String): Flow<Resource<MainProductModel>> = flow {
         emit(Resource.loading(null))
-        val response=apiSource.getCategoryProducts(id)
+        val response=apiSource.getCategoryProducts(category)
         when(response.status){
             Status.SUCCESS->{
-                emit(Resource.success(response.data?.toProductModel()))
+                emit(Resource.success(response.data?.toMainProductModel()))
             }
             Status.ERROR->{
                 emit(Resource.error(response.message?:"Error",null))
@@ -115,6 +114,8 @@ class ApiRepositoryImpl @Inject constructor(
             else->{}
         }
     }
+
+
 
     override suspend fun getSingleProduct(id: Int): Flow<Resource<SingleProductModel>> = flow{
         emit(Resource.loading(null))

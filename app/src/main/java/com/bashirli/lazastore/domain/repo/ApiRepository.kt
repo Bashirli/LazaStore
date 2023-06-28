@@ -1,10 +1,9 @@
 package com.bashirli.lazastore.domain.repo
 
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.ProductDTOItem
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
@@ -20,11 +19,11 @@ interface ApiRepository {
 
     suspend fun getCurrentUser():Flow<Resource<UserModel>>
 
-    suspend fun getProducts():Flow<Resource<List<ProductModel>>>
+    suspend fun getProducts():Flow<Resource<MainProductModel>>
 
     suspend fun getCategories():Flow<Resource<List<CategoryModel>>>
 
-    suspend fun getCategoryProducts(id:Int):Flow<Resource<List<ProductModel>>>
+    suspend fun getCategoryProducts(category:String):Flow<Resource<MainProductModel>>
 
     suspend fun getSingleProduct(id:Int):Flow<Resource<SingleProductModel>>
 

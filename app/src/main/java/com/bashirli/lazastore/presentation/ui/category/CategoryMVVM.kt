@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
+import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
 import com.bashirli.lazastore.domain.use_case.GetCategoryProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,15 +18,16 @@ class CategoryMVVM @Inject constructor(
     private val getCategoryProductsUseCase: GetCategoryProductsUseCase
 ) :ViewModel(){
 
-    private val _categoryProductsResponse=MutableLiveData<Resource<List<ProductModel>>>()
-    val categoryProductsResponse:LiveData<Resource<List<ProductModel>>> get()=_categoryProductsResponse
+    private val _categoryProductsResponse=MutableLiveData<Resource<MainProductModel>>()
+    val categoryProductsResponse:LiveData<Resource<MainProductModel>> get()=_categoryProductsResponse
 
-    fun getCategoryProducts(id:Int){
+    fun getCategoryProducts(category:String){
         viewModelScope.launch {
-            getCategoryProductsUseCase(id).collectLatest {
-                _categoryProductsResponse.value=it
-            }
+           getCategoryProductsUseCase(category).collectLatest {
+               _categoryProductsResponse.value=it
+           }
         }
     }
+
 
 }

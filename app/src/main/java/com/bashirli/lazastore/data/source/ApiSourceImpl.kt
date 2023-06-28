@@ -4,11 +4,11 @@ import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.findExceptionMessage
 import com.bashirli.lazastore.common.util.findExceptionMessageList
 import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.CategoryDTOItem
-import com.bashirli.lazastore.data.dto.ProductDTOItem
-import com.bashirli.lazastore.data.dto.RegisterDTO
+import com.bashirli.lazastore.data.dto.CategoryDTO
+import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
-import com.bashirli.lazastore.data.dto.UserDTO
+import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.data.service.Service
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import javax.inject.Inject
@@ -17,9 +17,9 @@ class ApiSourceImpl @Inject constructor(
     private val service: Service
 ) : ApiSource {
 
-    override suspend fun loginUser(email: String, password: String): Resource<AuthDTO> {
+    override suspend fun loginUser(username: String, password: String): Resource<AuthDTO> {
         return try{
-            val response=service.loginUser(email, password)
+            val response=service.loginUser(username, password)
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)
@@ -49,7 +49,7 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getProducts(): Resource<List<ProductDTOItem>> {
+    override suspend fun getProducts(): Resource<ProductDTO> {
         return try{
             val response=service.getProducts()
             if(response.isSuccessful){
@@ -65,7 +65,7 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCategories(): Resource<List<CategoryDTOItem>> {
+    override suspend fun getCategories(): Resource<CategoryDTO> {
         return try{
             val response=service.getCategories()
             if(response.isSuccessful){
@@ -97,9 +97,9 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCategoryProducts(id: Int): Resource<List<ProductDTOItem>> {
+    override suspend fun getCategoryProducts(category:String): Resource<ProductDTO> {
         return try{
-            val response=service.getCategoryProducts(id)
+            val response=service.getCategoryProducts(category)
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)
@@ -112,6 +112,7 @@ class ApiSourceImpl @Inject constructor(
             Resource.error(e.localizedMessage,null)
         }
     }
+
 
 
     override suspend fun getSingleProduct(id: Int): Resource<SingleProductDTO> {
