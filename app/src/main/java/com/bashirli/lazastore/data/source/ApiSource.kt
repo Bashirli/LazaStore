@@ -22,6 +22,8 @@ interface ApiSource {
 
     suspend fun getCurrentUser():Resource<UserDTO>
 
+    suspend fun getCurrentProfile():Resource<UserDTO>
+
     suspend fun getCategoryProducts(category:String):Resource<ProductDTO>
 
     suspend fun getSingleProduct(id:Int): Resource<SingleProductDTO>

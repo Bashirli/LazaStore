@@ -11,6 +11,7 @@ import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
+import com.bashirli.lazastore.domain.model.ProfileModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
@@ -62,6 +63,33 @@ fun UserDTO.toUserModel()=UserModel(
     username = username,
     image = image,
 
+)
+
+fun UserDTO.toProfileModel()=ProfileModel(
+    address,
+    age,
+    birthDate,
+    bloodGroup,
+    domain,
+    ein,
+    email,
+    eyeColor,
+    firstName,
+    gender,
+    height,
+    id,
+    image,
+    ip,
+    lastName,
+    macAddress,
+    maidenName,
+    password,
+    phone,
+    ssn,
+    university,
+    userAgent,
+    username,
+    weight
 )
 
 fun SingleProductDTO.toSingleProductModel()=SingleProductModel(

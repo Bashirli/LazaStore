@@ -5,6 +5,7 @@ import android.view.Gravity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bashirli.lazastore.R
 import com.bashirli.lazastore.common.base.BaseFragment
 import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
@@ -48,8 +49,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id))
             }
 
+            navigationView.setNavigationItemSelectedListener {
+                if(it.itemId == R.id.action_info){
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+                }
+                return@setNavigationItemSelectedListener true
+            }
         }
     }
+
+
 
     private fun observeData(){
         val pb=CustomProgressBar.progressDialog(requireContext())

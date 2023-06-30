@@ -39,6 +39,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     }
                     Status.SUCCESS->{
                         pb.cancel()
+                        successToast(requireActivity(),resources.getString(R.string.welcome))
                         it.data?.let {
                             setData(it)
                         }

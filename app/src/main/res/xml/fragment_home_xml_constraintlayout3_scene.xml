@@ -23,7 +23,7 @@
        </KeyFrameSet>
         <OnSwipe
             motion:touchAnchorId="@+id/rvProduct"
-            motion:touchAnchorSide="bottom" />
+            motion:touchAnchorSide="top" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">

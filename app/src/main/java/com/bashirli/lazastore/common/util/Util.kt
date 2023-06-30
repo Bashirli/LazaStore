@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.bashirli.lazastore.R
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -73,4 +74,3 @@ fun successToast(activity: FragmentActivity,successMessage:String){
         ResourcesCompat.getFont(activity,R.font.raleway_regular)
     )
 }
-

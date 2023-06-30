@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.signUpFragment->   visibility=View.GONE
                     R.id.categoryFragment->   visibility=View.GONE
                     R.id.productFragment->   visibility=View.GONE
+                    R.id.profileFragment->   visibility=View.GONE
                     else->{
                         if(visibility==View.GONE){
                             visibility=View.VISIBLE

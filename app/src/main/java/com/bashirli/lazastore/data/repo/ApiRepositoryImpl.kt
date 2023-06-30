@@ -6,6 +6,7 @@ import com.bashirli.lazastore.data.mapper.toAuthModel
 import com.bashirli.lazastore.data.mapper.toCategoryModel
 import com.bashirli.lazastore.data.mapper.toMainProductModel
 import com.bashirli.lazastore.data.mapper.toProductModel
+import com.bashirli.lazastore.data.mapper.toProfileModel
 import com.bashirli.lazastore.data.mapper.toRegisterModel
 import com.bashirli.lazastore.data.mapper.toSingleProductModel
 import com.bashirli.lazastore.data.mapper.toUserModel
@@ -14,6 +15,7 @@ import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
+import com.bashirli.lazastore.domain.model.ProfileModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
@@ -68,6 +70,20 @@ class ApiRepositoryImpl @Inject constructor(
             }
             Status.SUCCESS->{
                 emit(Resource.success(response.data?.toUserModel()))
+            }
+            else->{}
+        }
+    }
+
+    override suspend fun getCurrentProfile(): Flow<Resource<ProfileModel>> = flow {
+        emit(Resource.loading(null))
+        val response=apiSource.getCurrentUser()
+        when(response.status){
+            Status.ERROR->{
+                emit(Resource.error(response.message?:"Error",null))
+            }
+            Status.SUCCESS->{
+                emit(Resource.success(response.data?.toProfileModel()))
             }
             else->{}
         }

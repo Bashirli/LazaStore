@@ -97,6 +97,22 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCurrentProfile(): Resource<UserDTO> {
+        return try{
+            val response=service.getCurrentUser()
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
     override suspend fun getCategoryProducts(category:String): Resource<ProductDTO> {
         return try{
             val response=service.getCategoryProducts(category)

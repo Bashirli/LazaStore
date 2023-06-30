@@ -27,7 +27,7 @@
         app:elevation="5dp"
         app:menu="@menu/bottom_menu"
         app:labelVisibilityMode="selected"
-        app:itemTextColor="@color/purple"
+        app:itemTextColor="@color/blue"
         app:itemActiveIndicatorStyle="@null"
         app:itemIconSize="30dp"
         app:itemIconTint="@drawable/bottom_item_selected"

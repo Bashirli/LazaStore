@@ -5,6 +5,7 @@ import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.MainProductModel
 import com.bashirli.lazastore.domain.model.ProductModel
+import com.bashirli.lazastore.domain.model.ProfileModel
 import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
@@ -18,6 +19,8 @@ interface ApiRepository {
     suspend fun registerUser(registerPostModel: RegisterPostModel):Flow<Resource<RegisterModel>>
 
     suspend fun getCurrentUser():Flow<Resource<UserModel>>
+
+    suspend fun getCurrentProfile():Flow<Resource<ProfileModel>>
 
     suspend fun getProducts():Flow<Resource<MainProductModel>>
 

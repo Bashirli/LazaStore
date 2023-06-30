@@ -35,6 +35,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(FragmentCategoryB
         binding.apply {
             rvProduct.adapter=adapter
 
+            adapter.onProductClickListener={
+                findNavController().navigate(CategoryFragmentDirections.actionCategoryFragmentToProductFragment(it.id))
+            }
+
             buttonGoBack.setOnClickListener {
                 findNavController().popBackStack()
             }

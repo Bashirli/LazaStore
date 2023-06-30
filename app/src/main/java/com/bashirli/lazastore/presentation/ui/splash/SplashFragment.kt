@@ -24,7 +24,6 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
 
     override fun setup() {
         val token=tokenManager.getToken()
-        println(token)
         lifecycleScope.launch {
             delay(1300)
             if(token!=null){
@@ -34,6 +33,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
             }
 
         }
+
+
     }
 
 

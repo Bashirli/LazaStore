@@ -49,10 +49,20 @@
     <string name="settings">Settings</string>
     <string name="ok">OK</string>
     <string name="description">Description</string>
+    <string name="myProfile">My profile</string>
     <string name="skyBlue">Sky Blue</string>
     <string name="roseGold">Rose Gold</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="shoppingAdress">Shopping address</string>
+    <string name="orderHistory">Order history</string>
+    <string name="cards">Cards</string>
+    <string name="logout">Sign out</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
     <string name="green">Green</string>
     <string name="addToBasket">Add to basket</string>
+    <string name="favorites">Favorites</string>
+    <string name="cart">Cart</string>
     <string name="total">Total</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
