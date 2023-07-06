@@ -1,13 +1,15 @@
 package com.bashirli.lazastore.common.util
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.bashirli.lazastore.R
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -73,4 +75,13 @@ fun successToast(activity: FragmentActivity,successMessage:String){
         MotionToast.LONG_DURATION,
         ResourcesCompat.getFont(activity,R.font.raleway_regular)
     )
+}
+
+fun Activity.reset() {
+    val packageManager: PackageManager = packageManager
+    val intent = packageManager.getLaunchIntentForPackage(packageName)
+    val componentName = intent?.component
+    val mainIntent: Intent = Intent.makeRestartActivityTask(componentName)
+    this.startActivity(mainIntent)
+    this.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 }

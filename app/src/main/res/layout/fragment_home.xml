@@ -3,13 +3,14 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:saveEnabled="true"
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:id="@+id/rootConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:saveEnabled="true"
@@ -257,6 +258,7 @@
                 android:id="@+id/rvProduct"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:saveEnabled="true"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -63,15 +63,26 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_categoryFragment"
-            app:destination="@id/categoryFragment" />
+            app:destination="@id/categoryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_homeFragment_to_productFragment"
-            app:destination="@id/productFragment" />
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/categoryFragment"
@@ -80,7 +91,11 @@
         tools:layout="@layout/fragment_category" >
         <action
             android:id="@+id/action_categoryFragment_to_productFragment"
-            app:destination="@id/productFragment" />
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
         <argument
             android:name="categoryName"
             app:argType="string" />
@@ -98,17 +113,15 @@
         tools:layout="@layout/fragment_profile"
         android:id="@+id/profileFragment"
         android:name="com.bashirli.lazastore.presentation.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_splashFragment"
-            app:destination="@id/splashFragment"
-            app:launchSingleTop="false"
-            app:popUpTo="@id/profileFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/profileFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.bashirli.lazastore.presentation.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.bashirli.lazastore.presentation.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>

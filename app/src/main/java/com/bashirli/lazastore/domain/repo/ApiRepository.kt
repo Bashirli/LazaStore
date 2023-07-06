@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ApiRepository {
 
-    suspend fun loginUser(email:String,password:String): Flow<Resource<AuthModel>>
+    suspend fun loginUser(username:String,password:String): Flow<Resource<AuthModel>>
 
     suspend fun registerUser(registerPostModel: RegisterPostModel):Flow<Resource<RegisterModel>>
 

@@ -25,8 +25,8 @@ interface Service {
     @POST("users/add")
     suspend fun registerUser(@Body registerPostModel: RegisterPostModel):Response<RegisterDTO>
 
-    @GET("users/1")
-    suspend fun getCurrentUser():Response<UserDTO>
+    @GET("users/{id}")
+    suspend fun getCurrentUser(@Path("id") id:Int=1):Response<UserDTO>
 
     @GET("products")
     suspend fun getProducts():Response<ProductDTO>

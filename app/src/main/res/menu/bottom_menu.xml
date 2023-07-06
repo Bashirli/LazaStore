@@ -4,23 +4,23 @@
         android:icon="@drawable/baseline_home_24"
     android:id="@+id/homeFragment"
     ></item>
-    <item
-        android:icon="@drawable/search_icon"
-        android:id="@+id/action_search"
-        android:title="@string/search">
 
-    </item>
     <item android:title="@string/favorites"
-        android:id="@+id/action_favorites"
+        android:id="@+id/favoritesFragment"
         android:icon="@drawable/heart_ico"
         ></item>
 
     <item
         android:icon="@drawable/bag_icon"
-        android:id="@+id/action_cart"
+        android:id="@+id/cartFragment"
         android:title="@string/cart">
 
     </item>
+    <item
+        android:icon="@drawable/baseline_supervised_user_circle_24"
+        android:id="@+id/profileFragment"
+        android:title="@string/profile">
 
+    </item>
 
 </menu>

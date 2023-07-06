@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.Gravity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bashirli.lazastore.R
 import com.bashirli.lazastore.common.base.BaseFragment

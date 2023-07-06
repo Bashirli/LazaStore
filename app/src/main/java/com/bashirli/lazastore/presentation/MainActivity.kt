@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.bashirli.lazastore.R
+import com.bashirli.lazastore.common.util.gone
+import com.bashirli.lazastore.common.util.visible
 import com.bashirli.lazastore.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,21 +26,21 @@ class MainActivity : AppCompatActivity() {
         val navHost=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         val navController= navHost.navController
 
-        NavigationUI.setupWithNavController(binding.bottomNavigationView,navController)
+        binding.bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener{_,destination,_->
             with(binding.bottomNavigationView){
                 when(destination.id){
-                    R.id.splashFragment->   visibility=View.GONE
-                    R.id.welcomeFragment->  visibility=View.GONE
-                    R.id.loginFragment->    visibility=View.GONE
-                    R.id.signUpFragment->   visibility=View.GONE
-                    R.id.categoryFragment->   visibility=View.GONE
-                    R.id.productFragment->   visibility=View.GONE
-                    R.id.profileFragment->   visibility=View.GONE
+                    R.id.splashFragment->   gone()
+                    R.id.welcomeFragment->  gone()
+                    R.id.loginFragment->    gone()
+                    R.id.signUpFragment->   gone()
+                    R.id.categoryFragment->   gone()
+                    R.id.productFragment->   gone()
+                    R.id.profileFragment->   gone()
                     else->{
                         if(visibility==View.GONE){
-                            visibility=View.VISIBLE
+                            visible()
                         }
                     }
                 }

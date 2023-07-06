@@ -2,13 +2,14 @@ package com.bashirli.lazastore.presentation.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemCategoryBinding
 import com.bashirli.lazastore.domain.model.CategoryModel
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
-    private val arrayList=ArrayList<CategoryModel>()
     var onCategoryClickListener:(CategoryModel)->Unit={}
 
 
@@ -29,19 +30,31 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return differ.currentList.size
     }
 
     override fun onBindViewHolder(holder: CategoryHolder, position: Int) {
-        val item=arrayList.get(position)
+        val list=differ.currentList
+        val item=list.get(position)
         holder.bind(item)
         holder.find(item,onCategoryClickListener)
     }
 
+    private val categoryDiffer=object:DiffUtil.ItemCallback<CategoryModel>(){
+        override fun areItemsTheSame(oldItem: CategoryModel, newItem: CategoryModel): Boolean {
+            return oldItem.category==newItem.category
+        }
+
+        override fun areContentsTheSame(oldItem: CategoryModel, newItem: CategoryModel): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+    private val differ=AsyncListDiffer(this,categoryDiffer)
+
     fun updateList(list:List<CategoryModel>){
-        arrayList.clear()
-        arrayList.addAll(list)
-        notifyDataSetChanged()
+        differ.submitList(list)
     }
 
 }

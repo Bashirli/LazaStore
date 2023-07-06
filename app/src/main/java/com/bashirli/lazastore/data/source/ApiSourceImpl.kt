@@ -1,5 +1,6 @@
 package com.bashirli.lazastore.data.source
 
+import android.util.Log
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.findExceptionMessage
 import com.bashirli.lazastore.common.util.findExceptionMessageList
@@ -20,8 +21,10 @@ class ApiSourceImpl @Inject constructor(
     override suspend fun loginUser(username: String, password: String): Resource<AuthDTO> {
         return try{
             val response=service.loginUser(username, password)
+
             if(response.isSuccessful){
                 response.body()?.let {
+
                     Resource.success(it)
                 }?:Resource.error("Error",null)
             }else{

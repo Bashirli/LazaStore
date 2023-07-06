@@ -2,6 +2,8 @@ package com.bashirli.lazastore.presentation.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemProductBinding
 import com.bashirli.lazastore.domain.model.CategoryModel
@@ -9,7 +11,7 @@ import com.bashirli.lazastore.domain.model.ProductModel
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
-    private val arrayList=ArrayList<ProductModel>()
+
     var onProductClickListener:(ProductModel)->Unit={}
     inner class ProductHolder (private val binding:ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item:ProductModel){
@@ -29,19 +31,31 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return differ.currentList.size
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        val item=arrayList.get(position)
+        val list=differ.currentList
+        val item=list.get(position)
         holder.bind(item)
         holder.find(item,onProductClickListener)
     }
 
+     private val  productDiffUtil=object:DiffUtil.ItemCallback<ProductModel>(){
+        override fun areItemsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
+            return oldItem.id==newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: ProductModel, newItem: ProductModel): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+    private val differ=AsyncListDiffer(this,productDiffUtil)
+
     fun updateList(list:List<ProductModel>){
-        arrayList.clear()
-        arrayList.addAll(list)
-        notifyDataSetChanged()
+        differ.submitList(list)
     }
 
 }

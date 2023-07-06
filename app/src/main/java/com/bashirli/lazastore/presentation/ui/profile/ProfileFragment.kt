@@ -13,6 +13,7 @@ import com.bashirli.lazastore.common.base.BaseFragment
 import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
 import com.bashirli.lazastore.common.util.errorToast
+import com.bashirli.lazastore.common.util.reset
 import com.bashirli.lazastore.databinding.FragmentProfileBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +36,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         viewModel.getCurrentProfile()
         binding.apply {
             buttonGoBack.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToHomeFragment())
+                findNavController().popBackStack()
             }
             buttonSignOut.setOnClickListener {
                 signOut()
@@ -72,7 +73,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     private fun signOut(){
         tokenManager.removeToken()
-        findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToSplashFragment())
+        requireActivity().reset()
     }
 
 
