@@ -3,6 +3,8 @@ package com.bashirli.lazastore.data.repo
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.Status
 import com.bashirli.lazastore.data.mapper.toAuthModel
+import com.bashirli.lazastore.data.mapper.toCartMainModel
+import com.bashirli.lazastore.data.mapper.toCartModel
 import com.bashirli.lazastore.data.mapper.toCategoryModel
 import com.bashirli.lazastore.data.mapper.toMainProductModel
 import com.bashirli.lazastore.data.mapper.toProductModel
@@ -20,6 +22,8 @@ import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
+import com.bashirli.lazastore.domain.model.cart.CartMainModel
+import com.bashirli.lazastore.domain.model.cart.CartModel
 import com.bashirli.lazastore.domain.repo.ApiRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -142,6 +146,20 @@ class ApiRepositoryImpl @Inject constructor(
             }
             Status.ERROR->{
                 emit(Resource.error(response.message?:"Error",null))
+            }
+            else->{}
+        }
+    }
+
+    override suspend fun getCurrentUserCart(): Flow<Resource<CartMainModel>> = flow {
+       emit(Resource.loading(null))
+        val response=apiSource.getCurrentUserCart()
+        when(response.status){
+            Status.ERROR->{
+                emit(Resource.error(response.message?:"Error",null))
+            }
+            Status.SUCCESS->{
+                emit(Resource.success(response.data?.toCartMainModel()))
             }
             else->{}
         }

@@ -4,6 +4,7 @@ import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTO
 import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
+import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.RegisterPostModel
@@ -39,5 +40,8 @@ interface Service {
 
     @GET("products/{id}")
     suspend fun getSingleProduct(@Path("id") id:Int):Response<SingleProductDTO>
+
+    @GET("carts/user/{id}")
+    suspend fun getCurrentUserCart(@Path("id") id:Int=1):Response<CartDTO>
 
 }

@@ -8,6 +8,7 @@ import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTO
 import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
+import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.data.service.Service
@@ -137,6 +138,22 @@ class ApiSourceImpl @Inject constructor(
     override suspend fun getSingleProduct(id: Int): Resource<SingleProductDTO> {
         return try{
             val response=service.getSingleProduct(id)
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+    override suspend fun getCurrentUserCart(): Resource<CartDTO> {
+        return try{
+            val response=service.getCurrentUserCart()
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)

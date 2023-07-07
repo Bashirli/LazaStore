@@ -1,6 +1,7 @@
 package com.bashirli.lazastore.domain.repo
 
 import com.bashirli.lazastore.common.util.Resource
+import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
 import com.bashirli.lazastore.domain.model.MainProductModel
@@ -10,6 +11,8 @@ import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
+import com.bashirli.lazastore.domain.model.cart.CartMainModel
+import com.bashirli.lazastore.domain.model.cart.CartModel
 import kotlinx.coroutines.flow.Flow
 
 interface ApiRepository {
@@ -30,4 +33,5 @@ interface ApiRepository {
 
     suspend fun getSingleProduct(id:Int):Flow<Resource<SingleProductModel>>
 
+    suspend fun getCurrentUserCart(): Flow<Resource<CartMainModel>>
 }
