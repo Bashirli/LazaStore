@@ -77,6 +77,18 @@ fun successToast(activity: FragmentActivity,successMessage:String){
     )
 }
 
+fun infoToast(activity: FragmentActivity,infoMessage:String){
+    MotionToast.createColorToast(
+        activity,
+        activity.resources.getString(R.string.info),
+        infoMessage,
+        MotionToastStyle.INFO,
+        MotionToast.GRAVITY_BOTTOM,
+        MotionToast.LONG_DURATION,
+        ResourcesCompat.getFont(activity,R.font.raleway_regular)
+    )
+}
+
 fun Activity.reset() {
     val packageManager: PackageManager = packageManager
     val intent = packageManager.getLaunchIntentForPackage(packageName)

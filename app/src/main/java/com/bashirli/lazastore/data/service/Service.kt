@@ -5,15 +5,18 @@ import com.bashirli.lazastore.data.dto.CategoryDTO
 import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.CartDTO
+import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.body.UpdateCartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -43,5 +46,8 @@ interface Service {
 
     @GET("carts/user/{id}")
     suspend fun getCurrentUserCart(@Path("id") id:Int=1):Response<CartDTO>
+
+    @PUT("carts/{id}")
+    suspend fun updateUserCart(@Body updateCartBody: UpdateCartBody, @Path("id") id:Int):Response<CartUpdateDTO>
 
 }

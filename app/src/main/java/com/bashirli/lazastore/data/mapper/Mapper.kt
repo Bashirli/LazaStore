@@ -8,6 +8,7 @@ import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.Cart
 import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.cart.CartProduct
+import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.AuthModel
@@ -130,7 +131,6 @@ fun List<Cart>.toCartModel()=map{
 
 
 fun List<CartProduct>.toCartProductModel() = map {
-
     CartProductModel(
         discountPercentage = it.discountPercentage,
         discountedPrice = it.discountedPrice,
@@ -138,9 +138,18 @@ fun List<CartProduct>.toCartProductModel() = map {
         price = it.price,
         quantity = it.quantity,
         title = it.title,
-        total = it.total,
-
+        total = it.total
     )
-
 }
+
+
+
+fun CartUpdateDTO.toCartModel()=CartModel(
+    id = id ,
+    total=total,
+    products = products.toCartProductModel(),
+    totalProducts = totalProducts,
+    totalQuantity = totalQuantity,
+    userId = userId
+)
 

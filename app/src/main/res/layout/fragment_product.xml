@@ -244,11 +244,19 @@
                             android:id="@+id/linearLayout4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:elevation="5dp"
                             android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            </com.google.android.material.divider.MaterialDivider>
 
                             <LinearLayout
                                 android:layout_width="match_parent"

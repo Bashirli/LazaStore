@@ -9,10 +9,12 @@ import com.bashirli.lazastore.data.dto.CategoryDTO
 import com.bashirli.lazastore.data.dto.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.CartDTO
+import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.data.service.Service
 import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.body.UpdateCartBody
 import javax.inject.Inject
 
 class ApiSourceImpl @Inject constructor(
@@ -154,6 +156,22 @@ class ApiSourceImpl @Inject constructor(
     override suspend fun getCurrentUserCart(): Resource<CartDTO> {
         return try{
             val response=service.getCurrentUserCart()
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+    override suspend fun updateUserCart(updateCartBody: UpdateCartBody,cartId:Int): Resource<CartUpdateDTO> {
+        return try{
+            val response=service.updateUserCart(updateCartBody,cartId)
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)

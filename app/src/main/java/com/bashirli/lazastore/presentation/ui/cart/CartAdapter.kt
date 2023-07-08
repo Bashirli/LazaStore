@@ -10,10 +10,39 @@ import com.bashirli.lazastore.domain.model.cart.CartProductModel
 
 class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
 
+    var onClickIncreaseButton:(CartProductModel)->Unit={}
+    var onClickDecreaseButton:(CartProductModel)->Unit={}
+    var onClickDeleteButton:(CartProductModel)->Unit={}
+    var onClickItemListener:(CartProductModel)->Unit={}
+
     inner class CartAdapterViewHolder(private val binding : ItemCartBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item:CartProductModel){
             binding.productData=item
         }
+
+        fun find(
+            item:CartProductModel,
+            onClickIncreaseButton:(CartProductModel)->Unit={},
+            onClickDecreaseButton:(CartProductModel)->Unit={},
+            onClickItemListener:(CartProductModel)->Unit={},
+            onClickDeleteButton:(CartProductModel)->Unit={}
+        ){
+            binding.apply {
+                buttonIncrease.setOnClickListener {
+                    onClickIncreaseButton(item)
+                }
+                buttonDecrease.setOnClickListener {
+                    onClickDecreaseButton(item)
+                }
+                buttonDelete.setOnClickListener {
+                    onClickDeleteButton(item)
+                }
+                cardItem.setOnClickListener{
+                    onClickItemListener(item)
+                }
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapterViewHolder {
@@ -29,6 +58,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
         val list=differ.currentList
         val item=list.get(position)
         holder.bind(item)
+        holder.find(item, onClickIncreaseButton, onClickDecreaseButton, onClickItemListener, onClickDeleteButton)
     }
 
     private val cartAdapterDiffUtil = object: DiffUtil.ItemCallback<CartProductModel>(){

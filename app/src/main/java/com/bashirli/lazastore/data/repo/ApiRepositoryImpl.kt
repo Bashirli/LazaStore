@@ -2,9 +2,12 @@ package com.bashirli.lazastore.data.repo
 
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.Status
+import com.bashirli.lazastore.data.dto.cart.CartProduct
+import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.mapper.toAuthModel
 import com.bashirli.lazastore.data.mapper.toCartMainModel
 import com.bashirli.lazastore.data.mapper.toCartModel
+import com.bashirli.lazastore.data.mapper.toCartProductModel
 import com.bashirli.lazastore.data.mapper.toCategoryModel
 import com.bashirli.lazastore.data.mapper.toMainProductModel
 import com.bashirli.lazastore.data.mapper.toProductModel
@@ -22,8 +25,10 @@ import com.bashirli.lazastore.domain.model.RegisterModel
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.SingleProductModel
 import com.bashirli.lazastore.domain.model.UserModel
+import com.bashirli.lazastore.domain.model.body.UpdateCartBody
 import com.bashirli.lazastore.domain.model.cart.CartMainModel
 import com.bashirli.lazastore.domain.model.cart.CartModel
+import com.bashirli.lazastore.domain.model.cart.CartProductModel
 import com.bashirli.lazastore.domain.repo.ApiRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -160,6 +165,23 @@ class ApiRepositoryImpl @Inject constructor(
             }
             Status.SUCCESS->{
                 emit(Resource.success(response.data?.toCartMainModel()))
+            }
+            else->{}
+        }
+    }
+
+    override suspend fun updateUserCart(
+        updateCartBody: UpdateCartBody,
+        cartId: Int,
+    ): Flow<Resource<CartModel>> = flow{
+        emit(Resource.loading(null))
+        val response=apiSource.updateUserCart(updateCartBody, cartId)
+        when(response.status){
+            Status.ERROR->{
+                emit(Resource.error(response.message?:"Error",null))
+            }
+            Status.SUCCESS->{
+                emit(Resource.success(response.data?.toCartModel()))
             }
             else->{}
         }
