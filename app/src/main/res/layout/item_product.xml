@@ -30,6 +30,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="200dp"
+                app:cardBackgroundColor="@color/gray"
                 android:layout_marginTop="5dp"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="0dp">
@@ -37,6 +38,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
+                    android:scaleType="fitCenter"
                     app:setImageWithURL="@{productData.images.get(0)}"
                     android:layout_height="match_parent">
 

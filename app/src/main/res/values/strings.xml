@@ -72,6 +72,7 @@
     <string name="minItemCount">Quantity should be minimum 1.</string>
     <string name="favTip">Hit the heart button in products to add it to favorites.</string>
     <string name="cartEmpty">Cart is empty</string>
+    <string name="nothingFound">Nothing found! :(</string>
     <string name="cartTip">Hit the \'Add to cart\' button in products to add it to cart.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

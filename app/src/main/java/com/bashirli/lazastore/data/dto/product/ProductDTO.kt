@@ -1,4 +1,4 @@
-package com.bashirli.lazastore.data.dto
+package com.bashirli.lazastore.data.dto.product
 
 
 import com.google.gson.annotations.SerializedName

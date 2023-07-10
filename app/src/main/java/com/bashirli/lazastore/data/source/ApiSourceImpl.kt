@@ -1,16 +1,16 @@
 package com.bashirli.lazastore.data.source
 
-import android.util.Log
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.findExceptionMessage
 import com.bashirli.lazastore.common.util.findExceptionMessageList
 import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTO
-import com.bashirli.lazastore.data.dto.ProductDTO
+import com.bashirli.lazastore.data.dto.product.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.search.SearchDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.data.service.Service
 import com.bashirli.lazastore.domain.model.RegisterPostModel
@@ -172,6 +172,22 @@ class ApiSourceImpl @Inject constructor(
     override suspend fun updateUserCart(updateCartBody: UpdateCartBody,cartId:Int): Resource<CartUpdateDTO> {
         return try{
             val response=service.updateUserCart(updateCartBody,cartId)
+            if(response.isSuccessful){
+                response.body()?.let {
+                    Resource.success(it)
+                }?:Resource.error("Error",null)
+            }else{
+                val errorMessage=findExceptionMessage(response.errorBody())
+                Resource.error(errorMessage,null)
+            }
+        }catch (e:Exception){
+            Resource.error(e.localizedMessage,null)
+        }
+    }
+
+    override suspend fun getSearchProducts(searchText: String): Resource<SearchDTO> {
+        return try{
+            val response=service.getSearchProducts(searchText)
             if(response.isSuccessful){
                 response.body()?.let {
                     Resource.success(it)

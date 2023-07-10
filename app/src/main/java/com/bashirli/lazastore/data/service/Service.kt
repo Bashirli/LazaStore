@@ -2,11 +2,12 @@ package com.bashirli.lazastore.data.service
 
 import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTO
-import com.bashirli.lazastore.data.dto.ProductDTO
+import com.bashirli.lazastore.data.dto.product.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.search.SearchDTO
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.RegisterPostModel
 import com.bashirli.lazastore.domain.model.body.UpdateCartBody
@@ -49,5 +50,8 @@ interface Service {
 
     @PUT("carts/{id}")
     suspend fun updateUserCart(@Body updateCartBody: UpdateCartBody, @Path("id") id:Int):Response<CartUpdateDTO>
+
+    @GET("products/search")
+    suspend fun getSearchProducts(@Query("q") searchText:String) : Response<SearchDTO>
 
 }

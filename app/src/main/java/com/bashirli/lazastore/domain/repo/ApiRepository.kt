@@ -39,4 +39,6 @@ interface ApiRepository {
     suspend fun getCurrentUserCart(): Flow<Resource<CartMainModel>>
 
     suspend fun updateUserCart(updateCartBody: UpdateCartBody, cartId:Int):Flow<Resource<CartModel>>
+
+    suspend fun getSearchProducts(searchText:String):Flow<Resource<MainProductModel>>
 }

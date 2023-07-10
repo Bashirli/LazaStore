@@ -2,14 +2,16 @@ package com.bashirli.lazastore.data.mapper
 
 import com.bashirli.lazastore.data.dto.AuthDTO
 import com.bashirli.lazastore.data.dto.CategoryDTO
-import com.bashirli.lazastore.data.dto.Product
-import com.bashirli.lazastore.data.dto.ProductDTO
+import com.bashirli.lazastore.data.dto.product.ProductDTO
 import com.bashirli.lazastore.data.dto.SingleProductDTO
 import com.bashirli.lazastore.data.dto.cart.Cart
 import com.bashirli.lazastore.data.dto.cart.CartDTO
 import com.bashirli.lazastore.data.dto.cart.CartProduct
 import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
+import com.bashirli.lazastore.data.dto.product.Product
 import com.bashirli.lazastore.data.dto.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.search.SearchDTO
+import com.bashirli.lazastore.data.dto.search.SearchProduct
 import com.bashirli.lazastore.data.dto.user.UserDTO
 import com.bashirli.lazastore.domain.model.AuthModel
 import com.bashirli.lazastore.domain.model.CategoryModel
@@ -151,5 +153,26 @@ fun CartUpdateDTO.toCartModel()=CartModel(
     totalProducts = totalProducts,
     totalQuantity = totalQuantity,
     userId = userId
+)
+
+fun List<SearchProduct>.toProductModelFromSearch():List<ProductModel>{
+    return map{
+        ProductModel(
+            it.brand,
+            it.category,
+            it.description,
+            it.discountPercentage,
+            it.id,
+            it.images,
+            it.price,
+            it.rating,
+            it.thumbnail,
+            it.title
+        )
+    }
+}
+fun SearchDTO.toMainProductModel()=MainProductModel(
+    total = total,
+    products = searchProducts.toProductModelFromSearch()
 )
 

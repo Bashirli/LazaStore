@@ -2,9 +2,11 @@ package com.bashirli.lazastore.presentation.ui.cart
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bashirli.lazastore.R
 import com.bashirli.lazastore.databinding.ItemCartBinding
 import com.bashirli.lazastore.domain.model.cart.CartProductModel
 
@@ -43,6 +45,11 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
             }
         }
 
+        fun setAnimation(){
+            val anim=AnimationUtils.loadAnimation(binding.root.context, R.anim.rv_cart_anim)
+            binding.cardItem.animation=anim
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapterViewHolder {
@@ -59,6 +66,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
         val item=list.get(position)
         holder.bind(item)
         holder.find(item, onClickIncreaseButton, onClickDecreaseButton, onClickItemListener, onClickDeleteButton)
+        holder.setAnimation()
     }
 
     private val cartAdapterDiffUtil = object: DiffUtil.ItemCallback<CartProductModel>(){
