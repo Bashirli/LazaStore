@@ -20,6 +20,7 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
     inner class CartAdapterViewHolder(private val binding : ItemCartBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item:CartProductModel){
             binding.productData=item
+            binding.executePendingBindings()
         }
 
         fun find(

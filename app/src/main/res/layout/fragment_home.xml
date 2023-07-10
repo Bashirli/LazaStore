@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawerLayout"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:saveEnabled="true"
@@ -281,19 +280,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
-        app:menu="@menu/drawer_menu"
-        android:id="@+id/navigationView"
-        app:drawerLayoutCornerSize="0dp"
-        android:backgroundTint="@color/white"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/header_layout"
-        android:layout_height="match_parent">
 
 
 
-    </com.google.android.material.navigation.NavigationView>
-
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,8 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeMVVM @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
-    private val getCategoriesUseCase: GetCategoriesUseCase,
-    private val getCurrentUserUseCase: GetCurrentUserUseCase
+    private val getCategoriesUseCase: GetCategoriesUseCase
 ) : ViewModel() {
 
     private val _productData=MutableLiveData<Resource<MainProductModel>>()
@@ -30,22 +29,12 @@ class HomeMVVM @Inject constructor(
     private val _categoryData=MutableLiveData<Resource<List<CategoryModel>>>()
     val categoryData:LiveData<Resource<List<CategoryModel>>> get()=_categoryData
 
-    private val _currentUser=MutableLiveData<Resource<UserModel>>()
-    val currentUser:LiveData<Resource<UserModel>> get()=_currentUser
 
     init {
-        getCurrentUser()
         getProducts()
         getCategories()
     }
 
-    private fun getCurrentUser(){
-        viewModelScope.launch {
-            getCurrentUserUseCase().collectLatest {
-                _currentUser.value=it
-            }
-        }
-    }
 
     private fun getProducts(){
         viewModelScope.launch {

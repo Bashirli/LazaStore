@@ -3,8 +3,10 @@ package com.bashirli.lazastore.presentation.ui.home
 import android.transition.TransitionInflater
 import android.util.Log
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -21,17 +23,18 @@ import com.bashirli.lazastore.presentation.ui.cart.CartFragment
 import com.bashirli.lazastore.presentation.ui.home.adapter.CategoryAdapter
 import com.bashirli.lazastore.presentation.ui.home.adapter.ProductAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel by viewModels<HomeMVVM>()
+    private lateinit var navView:NavigationView
 
     private val adapterCategory= CategoryAdapter()
     private val adapterProduct=ProductAdapter()
 
-    private lateinit var currentUserData:UserModel
 
     override fun onViewCreateFinished() {
         setupAnimationEnterExit()
@@ -39,17 +42,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     override fun setup() {
-        requireActivity()
+
+        navView=requireActivity().findViewById(R.id.navigationView)
+
         binding.apply {
             rvCategory.adapter=adapterCategory
             rvProduct.adapter=adapterProduct
 
             buttonMenu.setOnClickListener {
-                drawerLayout.openDrawer(GravityCompat.START)
+                requireActivity().findViewById<DrawerLayout>(R.id.drawerLayout).openDrawer(Gravity.LEFT)
             }
 
             adapterCategory.onCategoryClickListener={
-                Log.d("catname",it.category)
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCategoryFragment(it.category))
             }
 
@@ -57,10 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProductFragment(it.id))
             }
 
-            navigationView.setNavigationItemSelectedListener {
-                navigationDestinationSetup(it)
-                return@setNavigationItemSelectedListener true
-            }
+
 
             editText.setOnClickListener{
                 val extras= FragmentNavigatorExtras(
@@ -113,65 +114,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                     }
                 }
             }
-
-            currentUser.observe(viewLifecycleOwner){
-                when(it.status){
-                    Status.ERROR->{
-                        pb.cancel()
-                        errorToast(requireActivity(),it.message?:"Error")
-                    }
-                    Status.SUCCESS->{
-                        pb.cancel()
-                        it.data?.let {
-                            setUserData(it)
-                        }
-                    }
-                    Status.LOADING->{
-                        pb.show()
-                    }
-                }
-            }
-
         }
     }
 
-    private fun setUserData(data:UserModel){
-        currentUserData=data
-        val headerView =binding.navigationView.getHeaderView(0)
-        val headerBinding=HeaderLayoutBinding.bind(headerView)
 
-        headerBinding.apply {
-            userModel=currentUserData
-        }
-
-    }
     private fun setupAnimationEnterExit(){
         val anim= TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
         sharedElementEnterTransition=anim
         sharedElementReturnTransition=anim
     }
-
-    private fun navigationDestinationSetup(it: MenuItem){
-        val bottomNavView=requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        when(it.itemId){
-            R.id.action_info->{
-                bottomNavView.selectedItemId=R.id.profileFragment
-            }
-            R.id.action_order->{
-                bottomNavView.selectedItemId=R.id.cartFragment
-            }
-            R.id.action_password->{
-
-            }
-            R.id.action_wishlist->{
-                bottomNavView.selectedItemId=R.id.favoritesFragment
-            }
-            R.id.action_settings->{
-
-            }
-        }
-
-    }
-
 
 }

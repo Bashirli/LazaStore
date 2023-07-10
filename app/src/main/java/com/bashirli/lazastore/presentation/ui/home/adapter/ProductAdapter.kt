@@ -16,6 +16,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     inner class ProductHolder (private val binding:ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item:ProductModel){
             binding.productData=item
+            binding.executePendingBindings()
         }
         fun find(item:ProductModel,onProductClickListener:(ProductModel)->Unit={}){
             binding.linearLayout.setOnClickListener {
