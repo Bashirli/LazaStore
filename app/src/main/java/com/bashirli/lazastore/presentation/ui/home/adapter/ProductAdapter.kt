@@ -6,19 +6,18 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemProductBinding
-import com.bashirli.lazastore.domain.model.CategoryModel
-import com.bashirli.lazastore.domain.model.ProductModel
+import com.bashirli.lazastore.domain.model.remote.ProductModel
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
 
     var onProductClickListener:(ProductModel)->Unit={}
     inner class ProductHolder (private val binding:ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item:ProductModel){
+        fun bind(item: ProductModel){
             binding.productData=item
             binding.executePendingBindings()
         }
-        fun find(item:ProductModel,onProductClickListener:(ProductModel)->Unit={}){
+        fun find(item: ProductModel, onProductClickListener:(ProductModel)->Unit={}){
             binding.linearLayout.setOnClickListener {
                 onProductClickListener(item)
             }

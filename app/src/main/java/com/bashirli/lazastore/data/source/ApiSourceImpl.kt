@@ -3,18 +3,18 @@ package com.bashirli.lazastore.data.source
 import com.bashirli.lazastore.common.util.Resource
 import com.bashirli.lazastore.common.util.findExceptionMessage
 import com.bashirli.lazastore.common.util.findExceptionMessageList
-import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.CategoryDTO
-import com.bashirli.lazastore.data.dto.product.ProductDTO
-import com.bashirli.lazastore.data.dto.SingleProductDTO
-import com.bashirli.lazastore.data.dto.cart.CartDTO
-import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
-import com.bashirli.lazastore.data.dto.register.RegisterDTO
-import com.bashirli.lazastore.data.dto.search.SearchDTO
-import com.bashirli.lazastore.data.dto.user.UserDTO
-import com.bashirli.lazastore.data.service.Service
-import com.bashirli.lazastore.domain.model.RegisterPostModel
-import com.bashirli.lazastore.domain.model.body.UpdateCartBody
+import com.bashirli.lazastore.data.dto.remote.AuthDTO
+import com.bashirli.lazastore.data.dto.remote.CategoryDTO
+import com.bashirli.lazastore.data.dto.remote.product.ProductDTO
+import com.bashirli.lazastore.data.dto.remote.SingleProductDTO
+import com.bashirli.lazastore.data.dto.remote.cart.CartDTO
+import com.bashirli.lazastore.data.dto.remote.cart.CartUpdateDTO
+import com.bashirli.lazastore.data.dto.remote.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.remote.search.SearchDTO
+import com.bashirli.lazastore.data.dto.remote.user.UserDTO
+import com.bashirli.lazastore.data.service.remote.Service
+import com.bashirli.lazastore.domain.model.remote.RegisterPostModel
+import com.bashirli.lazastore.domain.model.remote.body.UpdateCartBody
 import javax.inject.Inject
 
 class ApiSourceImpl @Inject constructor(
@@ -169,7 +169,7 @@ class ApiSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateUserCart(updateCartBody: UpdateCartBody,cartId:Int): Resource<CartUpdateDTO> {
+    override suspend fun updateUserCart(updateCartBody: UpdateCartBody, cartId:Int): Resource<CartUpdateDTO> {
         return try{
             val response=service.updateUserCart(updateCartBody,cartId)
             if(response.isSuccessful){

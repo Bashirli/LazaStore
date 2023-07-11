@@ -10,7 +10,7 @@ import com.bashirli.lazastore.common.util.Status
 import com.bashirli.lazastore.databinding.FragmentSignUpBinding
 import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.common.util.successToast
-import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.remote.RegisterPostModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

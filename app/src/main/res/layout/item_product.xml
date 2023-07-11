@@ -3,7 +3,7 @@
     <data>
         <variable
             name="productData"
-            type="com.bashirli.lazastore.domain.model.ProductModel" />
+            type="com.bashirli.lazastore.domain.model.remote.ProductModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

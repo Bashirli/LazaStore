@@ -117,7 +117,15 @@
         android:id="@+id/favoritesFragment"
         android:name="com.bashirli.lazastore.presentation.ui.favorites.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_productFragment"
+            app:destination="@id/productFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.bashirli.lazastore.presentation.ui.cart.CartFragment"

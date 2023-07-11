@@ -12,7 +12,7 @@ import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.common.TokenManager
 import com.bashirli.lazastore.common.util.Status
 import com.bashirli.lazastore.common.util.successToast
-import com.bashirli.lazastore.domain.model.AuthModel
+import com.bashirli.lazastore.domain.model.remote.AuthModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -99,7 +99,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         return false
     }
 
-    private fun setData(data:AuthModel){
+    private fun setData(data: AuthModel){
         val token=data.accessToken
         tokenManager.setToken(token)
         findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())

@@ -1,14 +1,9 @@
 package com.bashirli.lazastore.presentation.ui.home
 
 import android.transition.TransitionInflater
-import android.util.Log
 import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.MenuItem
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.bashirli.lazastore.R
@@ -17,12 +12,8 @@ import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
 import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.databinding.FragmentHomeBinding
-import com.bashirli.lazastore.databinding.HeaderLayoutBinding
-import com.bashirli.lazastore.domain.model.UserModel
-import com.bashirli.lazastore.presentation.ui.cart.CartFragment
 import com.bashirli.lazastore.presentation.ui.home.adapter.CategoryAdapter
 import com.bashirli.lazastore.presentation.ui.home.adapter.ProductAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 

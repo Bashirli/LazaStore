@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.domain.model.body.UpdateCartBody
-import com.bashirli.lazastore.domain.model.cart.CartMainModel
-import com.bashirli.lazastore.domain.model.cart.CartModel
+import com.bashirli.lazastore.domain.model.remote.body.UpdateCartBody
+import com.bashirli.lazastore.domain.model.remote.cart.CartMainModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartModel
 import com.bashirli.lazastore.domain.repo.ApiRepository
 import com.bashirli.lazastore.domain.use_case.GetCurrentProfileUseCase
 import com.bashirli.lazastore.domain.use_case.GetCurrentUserCartUseCase
@@ -42,7 +42,7 @@ class CartMVVM @Inject constructor(
         }
     }
 
-    fun updateUserCart(updateCartBody: UpdateCartBody,cartId:Int){
+    fun updateUserCart(updateCartBody: UpdateCartBody, cartId:Int){
         viewModelScope.launch {
             updateUserCartUseCase(updateCartBody, cartId).collectLatest {
                 _updatedCartData.value=it

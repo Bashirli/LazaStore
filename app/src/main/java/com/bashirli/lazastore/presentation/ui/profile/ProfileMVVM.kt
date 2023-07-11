@@ -5,8 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.domain.model.MainProductModel
-import com.bashirli.lazastore.domain.model.ProfileModel
+import com.bashirli.lazastore.domain.model.remote.ProfileModel
 import com.bashirli.lazastore.domain.use_case.GetCurrentProfileUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest

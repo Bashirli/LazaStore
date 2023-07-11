@@ -1,37 +1,39 @@
 package com.bashirli.lazastore.data.mapper
 
-import com.bashirli.lazastore.data.dto.AuthDTO
-import com.bashirli.lazastore.data.dto.CategoryDTO
-import com.bashirli.lazastore.data.dto.product.ProductDTO
-import com.bashirli.lazastore.data.dto.SingleProductDTO
-import com.bashirli.lazastore.data.dto.cart.Cart
-import com.bashirli.lazastore.data.dto.cart.CartDTO
-import com.bashirli.lazastore.data.dto.cart.CartProduct
-import com.bashirli.lazastore.data.dto.cart.CartUpdateDTO
-import com.bashirli.lazastore.data.dto.product.Product
-import com.bashirli.lazastore.data.dto.register.RegisterDTO
-import com.bashirli.lazastore.data.dto.search.SearchDTO
-import com.bashirli.lazastore.data.dto.search.SearchProduct
-import com.bashirli.lazastore.data.dto.user.UserDTO
-import com.bashirli.lazastore.domain.model.AuthModel
-import com.bashirli.lazastore.domain.model.CategoryModel
-import com.bashirli.lazastore.domain.model.MainProductModel
-import com.bashirli.lazastore.domain.model.ProductModel
-import com.bashirli.lazastore.domain.model.ProfileModel
-import com.bashirli.lazastore.domain.model.RegisterModel
-import com.bashirli.lazastore.domain.model.SingleProductModel
-import com.bashirli.lazastore.domain.model.UserModel
-import com.bashirli.lazastore.domain.model.cart.CartMainModel
-import com.bashirli.lazastore.domain.model.cart.CartModel
-import com.bashirli.lazastore.domain.model.cart.CartProductModel
+import com.bashirli.lazastore.data.dto.local.FavoritesDTO
+import com.bashirli.lazastore.data.dto.remote.AuthDTO
+import com.bashirli.lazastore.data.dto.remote.CategoryDTO
+import com.bashirli.lazastore.data.dto.remote.product.ProductDTO
+import com.bashirli.lazastore.data.dto.remote.SingleProductDTO
+import com.bashirli.lazastore.data.dto.remote.cart.Cart
+import com.bashirli.lazastore.data.dto.remote.cart.CartDTO
+import com.bashirli.lazastore.data.dto.remote.cart.CartProduct
+import com.bashirli.lazastore.data.dto.remote.cart.CartUpdateDTO
+import com.bashirli.lazastore.data.dto.remote.product.Product
+import com.bashirli.lazastore.data.dto.remote.register.RegisterDTO
+import com.bashirli.lazastore.data.dto.remote.search.SearchDTO
+import com.bashirli.lazastore.data.dto.remote.search.SearchProduct
+import com.bashirli.lazastore.data.dto.remote.user.UserDTO
+import com.bashirli.lazastore.domain.model.local.FavoritesModel
+import com.bashirli.lazastore.domain.model.remote.AuthModel
+import com.bashirli.lazastore.domain.model.remote.CategoryModel
+import com.bashirli.lazastore.domain.model.remote.MainProductModel
+import com.bashirli.lazastore.domain.model.remote.ProductModel
+import com.bashirli.lazastore.domain.model.remote.ProfileModel
+import com.bashirli.lazastore.domain.model.remote.RegisterModel
+import com.bashirli.lazastore.domain.model.remote.SingleProductModel
+import com.bashirli.lazastore.domain.model.remote.UserModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartMainModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartProductModel
 
-fun AuthDTO.toAuthModel():AuthModel {
+fun AuthDTO.toAuthModel(): AuthModel {
    return AuthModel(
         accessToken = token
     )
 }
 
-fun RegisterDTO.toRegisterModel():RegisterModel{
+fun RegisterDTO.toRegisterModel(): RegisterModel {
     return RegisterModel(
         username = username,
         email = email,
@@ -54,7 +56,7 @@ fun List<Product>.toProductModel() = map {
     )
 }
 
-fun ProductDTO.toMainProductModel():MainProductModel=MainProductModel(
+fun ProductDTO.toMainProductModel(): MainProductModel = MainProductModel(
         total=total,
         products = products.toProductModel()
     )
@@ -68,13 +70,13 @@ fun CategoryDTO.toCategoryModel()=map {
     )
 }
 
-fun UserDTO.toUserModel()=UserModel(
+fun UserDTO.toUserModel()= UserModel(
     username = username,
     image = image,
 
 )
 
-fun UserDTO.toProfileModel()=ProfileModel(
+fun UserDTO.toProfileModel()= ProfileModel(
     address,
     age,
     birthDate,
@@ -101,7 +103,7 @@ fun UserDTO.toProfileModel()=ProfileModel(
     weight
 )
 
-fun SingleProductDTO.toSingleProductModel()=SingleProductModel(
+fun SingleProductDTO.toSingleProductModel()= SingleProductModel(
     id=id,
     description = description,
     images = images,
@@ -114,7 +116,7 @@ fun SingleProductDTO.toSingleProductModel()=SingleProductModel(
     category = category
 )
 
-fun CartDTO.toCartMainModel()=CartMainModel(
+fun CartDTO.toCartMainModel()= CartMainModel(
     total = total,
     limit = limit,
     carts = carts.toCartModel()
@@ -146,7 +148,7 @@ fun List<CartProduct>.toCartProductModel() = map {
 
 
 
-fun CartUpdateDTO.toCartModel()=CartModel(
+fun CartUpdateDTO.toCartModel()= CartModel(
     id = id ,
     total=total,
     products = products.toCartProductModel(),
@@ -171,8 +173,20 @@ fun List<SearchProduct>.toProductModelFromSearch():List<ProductModel>{
         )
     }
 }
-fun SearchDTO.toMainProductModel()=MainProductModel(
+fun SearchDTO.toMainProductModel()= MainProductModel(
     total = total,
     products = searchProducts.toProductModelFromSearch()
 )
+
+
+fun List<FavoritesDTO>.toFavoriteModel()=map {
+    FavoritesModel(
+        id=it.id,
+        title = it.title,
+        price = it.price,
+        description = it.description,
+        imageURL = it.imageURL
+
+    )
+}
 

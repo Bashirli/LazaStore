@@ -17,10 +17,10 @@ import com.bashirli.lazastore.common.util.gone
 import com.bashirli.lazastore.common.util.infoToast
 import com.bashirli.lazastore.common.util.visible
 import com.bashirli.lazastore.databinding.FragmentCartBinding
-import com.bashirli.lazastore.domain.model.body.UpdateCartBody
-import com.bashirli.lazastore.domain.model.body.UpdateProduct
-import com.bashirli.lazastore.domain.model.cart.CartMainModel
-import com.bashirli.lazastore.domain.model.cart.CartModel
+import com.bashirli.lazastore.domain.model.remote.body.UpdateCartBody
+import com.bashirli.lazastore.domain.model.remote.body.UpdateProduct
+import com.bashirli.lazastore.domain.model.remote.cart.CartMainModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -119,13 +119,15 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
                     job?.cancel()
                     job = lifecycleScope.launch {
                         delay(300)
-                        val updateCartBody=UpdateCartBody(
+                        val updateCartBody= UpdateCartBody(
                             true,
-                            listOf(UpdateProduct(
+                            listOf(
+                                UpdateProduct(
                                 id=it.id,
                                 price=it.price,
                                 quantity = itemNumber-1,
-                            ))
+                            )
+                            )
                         )
                         viewModel.updateUserCart(updateCartBody,cartMainModel.carts.get(0).id)
                     }
@@ -141,13 +143,15 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
                  job?.cancel()
                  job = lifecycleScope.launch {
                     delay(300)
-                    val updateCartBody=UpdateCartBody(
+                    val updateCartBody= UpdateCartBody(
                         true,
-                        listOf(UpdateProduct(
+                        listOf(
+                            UpdateProduct(
                             id=it.id,
                             price=it.price,
                             quantity = it.quantity+1,
-                        ))
+                        )
+                        )
                     )
                     viewModel.updateUserCart(updateCartBody,cartMainModel.carts.get(0).id)
                 }
@@ -161,7 +165,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(FragmentCartBinding::infl
         }
     }
 
-    private fun updateUI(data:CartModel){
+    private fun updateUI(data: CartModel){
         binding.apply {
             cartModel=data
         }

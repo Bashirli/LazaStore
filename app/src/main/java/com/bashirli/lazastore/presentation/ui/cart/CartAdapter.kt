@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.R
 import com.bashirli.lazastore.databinding.ItemCartBinding
-import com.bashirli.lazastore.domain.model.cart.CartProductModel
+import com.bashirli.lazastore.domain.model.remote.cart.CartProductModel
 
 class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
 
@@ -18,13 +18,13 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartAdapterViewHolder>() {
     var onClickItemListener:(CartProductModel)->Unit={}
 
     inner class CartAdapterViewHolder(private val binding : ItemCartBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item:CartProductModel){
+        fun bind(item: CartProductModel){
             binding.productData=item
             binding.executePendingBindings()
         }
 
         fun find(
-            item:CartProductModel,
+            item: CartProductModel,
             onClickIncreaseButton:(CartProductModel)->Unit={},
             onClickDecreaseButton:(CartProductModel)->Unit={},
             onClickItemListener:(CartProductModel)->Unit={},

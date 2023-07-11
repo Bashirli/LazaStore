@@ -4,8 +4,8 @@ import com.bashirli.lazastore.BASE_URL
 import com.bashirli.lazastore.common.TokenManager
 import com.bashirli.lazastore.data.repo.ApiRepositoryImpl
 import com.bashirli.lazastore.domain.repo.ApiRepository
-import com.bashirli.lazastore.data.service.ApiKeyInterceptor
-import com.bashirli.lazastore.data.service.Service
+import com.bashirli.lazastore.data.service.remote.ApiKeyInterceptor
+import com.bashirli.lazastore.data.service.remote.Service
 import com.bashirli.lazastore.data.source.ApiSource
 import com.bashirli.lazastore.data.source.ApiSourceImpl
 import dagger.Module

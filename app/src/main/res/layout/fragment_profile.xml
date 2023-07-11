@@ -3,7 +3,7 @@
     <data>
         <variable
             name="profileData"
-            type="com.bashirli.lazastore.domain.model.ProfileModel" />
+            type="com.bashirli.lazastore.domain.model.remote.ProfileModel" />
     </data>
     <ScrollView
         android:fillViewport="true"

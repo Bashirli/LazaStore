@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bashirli.lazastore.databinding.ItemCategoryBinding
-import com.bashirli.lazastore.domain.model.CategoryModel
+import com.bashirli.lazastore.domain.model.remote.CategoryModel
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
@@ -14,11 +14,11 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 
 
     inner class CategoryHolder(private val binding:ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item:CategoryModel){
+        fun bind(item: CategoryModel){
             binding.categoryData=item
             binding.executePendingBindings()
         }
-        fun find(item:CategoryModel,onCategoryClickListener:(CategoryModel)->Unit={}){
+        fun find(item: CategoryModel, onCategoryClickListener:(CategoryModel)->Unit={}){
             binding.cardCategory.setOnClickListener {
                 onCategoryClickListener(item)
             }

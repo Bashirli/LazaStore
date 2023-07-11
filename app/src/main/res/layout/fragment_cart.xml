@@ -3,7 +3,7 @@
     <data>
         <variable
             name="cartModel"
-            type="com.bashirli.lazastore.domain.model.cart.CartModel" />
+            type="com.bashirli.lazastore.domain.model.remote.cart.CartModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

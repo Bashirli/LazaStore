@@ -5,7 +5,7 @@
     <data>
         <variable
             name="userModel"
-            type="com.bashirli.lazastore.domain.model.UserModel" />
+            type="com.bashirli.lazastore.domain.model.remote.UserModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,18 +1,10 @@
 package com.bashirli.lazastore.presentation.ui.search
 
-import android.content.Context
-import android.os.Bundle
 import android.transition.TransitionInflater
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.bashirli.lazastore.R
 import com.bashirli.lazastore.common.base.BaseFragment
 import com.bashirli.lazastore.common.util.CustomProgressBar
 import com.bashirli.lazastore.common.util.Status
@@ -20,8 +12,7 @@ import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.common.util.gone
 import com.bashirli.lazastore.common.util.visible
 import com.bashirli.lazastore.databinding.FragmentSearchBinding
-import com.bashirli.lazastore.domain.model.MainProductModel
-import com.bashirli.lazastore.domain.model.ProductModel
+import com.bashirli.lazastore.domain.model.remote.MainProductModel
 import com.bashirli.lazastore.presentation.ui.home.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -117,7 +108,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         }
     }
 
-    private fun updateUI(data:MainProductModel){
+    private fun updateUI(data: MainProductModel){
         binding.productData=data
         if(data.products.isEmpty()){
             binding.layoutEmpty.visible()

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.domain.model.AuthModel
+import com.bashirli.lazastore.domain.model.remote.AuthModel
 import com.bashirli.lazastore.domain.use_case.LoginUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest

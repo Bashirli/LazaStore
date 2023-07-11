@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.domain.model.RegisterModel
-import com.bashirli.lazastore.domain.model.RegisterPostModel
+import com.bashirli.lazastore.domain.model.remote.RegisterModel
+import com.bashirli.lazastore.domain.model.remote.RegisterPostModel
 import com.bashirli.lazastore.domain.use_case.RegisterUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest

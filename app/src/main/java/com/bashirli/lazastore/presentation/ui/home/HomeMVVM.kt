@@ -5,12 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bashirli.lazastore.common.util.Resource
-import com.bashirli.lazastore.domain.model.CategoryModel
-import com.bashirli.lazastore.domain.model.MainProductModel
-import com.bashirli.lazastore.domain.model.ProductModel
-import com.bashirli.lazastore.domain.model.UserModel
+import com.bashirli.lazastore.domain.model.remote.CategoryModel
+import com.bashirli.lazastore.domain.model.remote.MainProductModel
 import com.bashirli.lazastore.domain.use_case.GetCategoriesUseCase
-import com.bashirli.lazastore.domain.use_case.GetCurrentUserUseCase
 import com.bashirli.lazastore.domain.use_case.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest

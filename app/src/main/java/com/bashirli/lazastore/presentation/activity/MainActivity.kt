@@ -2,23 +2,18 @@ package com.bashirli.lazastore.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.res.ResourcesCompat
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.bashirli.lazastore.R
 import com.bashirli.lazastore.common.util.Status
-import com.bashirli.lazastore.common.util.errorToast
 import com.bashirli.lazastore.common.util.gone
 import com.bashirli.lazastore.common.util.visible
 import com.bashirli.lazastore.databinding.ActivityMainBinding
 import com.bashirli.lazastore.databinding.HeaderLayoutBinding
-import com.bashirli.lazastore.domain.model.UserModel
+import com.bashirli.lazastore.domain.model.remote.UserModel
 import dagger.hilt.android.AndroidEntryPoint
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
@@ -105,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setData(data:UserModel){
+    private fun setData(data: UserModel){
         val headerBinding=HeaderLayoutBinding.bind(binding.navigationView.getHeaderView(0))
         headerBinding.userModel=data
     }
