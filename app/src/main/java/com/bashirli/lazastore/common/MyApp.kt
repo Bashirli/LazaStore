@@ -1,4 +1,4 @@
-package com.bashirli.lazastore
+package com.bashirli.lazastore.common
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

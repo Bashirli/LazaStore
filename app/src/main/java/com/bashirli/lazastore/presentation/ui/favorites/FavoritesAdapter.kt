@@ -45,7 +45,11 @@ class FavoritesAdapter : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHold
 
 
     fun updateList(list:List<FavoritesModel>){
-        diffList(myList,list, sameItem = {a,b-> a.id==b.id}).dispatchUpdatesTo(this)
+        diffList(
+            myList,
+            list,
+            sameItem = {a,b-> a.id==b.id}
+        ).dispatchUpdatesTo(this)
         myList.clear()
         myList.addAll(list)
     }
