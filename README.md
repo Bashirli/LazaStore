@@ -1,5 +1,6 @@
 # LazaStore
-<img width="1107" alt="wp" src="https://github.com/Bashirli/LazaStore/assets/109737647/85003d19-9f3a-47da-8121-06d41f91b6bc">
+
+![Artboard_15587](https://github.com/Bashirli/LazaStore/assets/109737647/a7ba353f-f954-4421-b3ec-03e549247468)
 
 
 ------------------------------------------------------------------
@@ -9,8 +10,9 @@ Layers of Clean Architecture:
 - Data
 - Domain
 - Presentation
-  
-![Artboard_15587](https://github.com/Bashirli/LazaStore/assets/109737647/bfe0b768-3d37-4d5b-9237-226c727bab32)
+
+  ![Artboard_15587](https://github.com/Bashirli/LazaStore/assets/109737647/a4ebcd15-dab4-41e1-adc8-1d8c095ebb52)
+
 
 
 
@@ -34,16 +36,20 @@ Technologies I use in my app:
 ------------------------------------------------------------------
 App screens:
 ------------------------------------------------------------------
-<img width="1124" alt="Frame 3" src="https://github.com/Bashirli/LazaStore/assets/109737647/5d9629ee-817b-46d4-8882-0ff8d2418736">
+<img width="1124" alt="Frame 3" src="https://github.com/Bashirli/LazaStore/assets/109737647/63bc1bed-bfcd-4b6a-9a9e-1a3173c91701">
 
-<img width="1124" alt="Frame 2" src="https://github.com/Bashirli/LazaStore/assets/109737647/be12d745-db91-4736-be05-0106d0fb9cbd">
+<img width="1124" alt="Frame 2" src="https://github.com/Bashirli/LazaStore/assets/109737647/2ffc97ad-1fcf-454b-9728-508835ecced3">
+<img width="1124" alt="Frame 4" src="https://github.com/Bashirli/LazaStore/assets/109737647/2a097d69-fb13-40b9-895c-5de10d830470">
 
-<img width="1124" alt="Frame 4" src="https://github.com/Bashirli/LazaStore/assets/109737647/58115e6e-277e-4bba-b1a1-7db3ee418393">
-<img width="1124" alt="Frame 5" src="https://github.com/Bashirli/LazaStore/assets/109737647/5c391a44-1030-4282-8786-e2963b90d275">
 
-<img width="1124" alt="Frame 8" src="https://github.com/Bashirli/LazaStore/assets/109737647/d1414187-d913-4512-8659-ef22dfe9f11f">
-<img width="1124" alt="Frame 9" src="https://github.com/Bashirli/LazaStore/assets/109737647/51640c23-497e-48ea-8dc3-97a513397fbf">
+<img width="1124" alt="Frame 5" src="https://github.com/Bashirli/LazaStore/assets/109737647/4bac1065-669e-4738-8a38-c02d6e9b9edb">
 
-<img width="1124" alt="Frame 7" src="https://github.com/Bashirli/LazaStore/assets/109737647/b6fd2316-5900-40a1-9658-225567525aae">
 
-<img width="1124" alt="Frame 6" src="https://github.com/Bashirli/LazaStore/assets/109737647/32d4a3d1-ee60-4bb4-9597-00ace4573773">
+
+<img width="1124" alt="Frame 8" src="https://github.com/Bashirli/LazaStore/assets/109737647/56db8deb-2664-485e-909e-99ba1e4701e8">
+<img width="1124" alt="Frame 9" src="https://github.com/Bashirli/LazaStore/assets/109737647/5eb14a3b-07ee-49b5-b990-8a6a4be505d6">
+
+
+<img width="1124" alt="Frame 7" src="https://github.com/Bashirli/LazaStore/assets/109737647/c20d1df8-ddb6-4f1d-a8a9-02be5c92d732">
+
+<img width="1124" alt="Frame 6" src="https://github.com/Bashirli/LazaStore/assets/109737647/9e13beb8-fe26-44de-87ff-c1d578d876cb">
