@@ -1,7 +1,9 @@
 # LazaStore
 <img width="1107" alt="wp" src="https://github.com/Bashirli/LazaStore/assets/109737647/85003d19-9f3a-47da-8121-06d41f91b6bc">
 ------------------------------------------------------------------
+
 API is from https://dummyjson.com/. For educational purposes only!
+
 ------------------------------------------------------------------
 
 Layers of Clean Architecture:
