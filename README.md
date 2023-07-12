@@ -1,6 +1,7 @@
 # LazaStore
 
-![Artboard_15587](https://github.com/Bashirli/LazaStore/assets/109737647/a7ba353f-f954-4421-b3ec-03e549247468)
+
+<img width="1107" alt="wp" src="https://github.com/Bashirli/LazaStore/assets/109737647/ddb3ed06-8c88-445b-9776-c9cb057a90e5">
 
 
 ------------------------------------------------------------------
